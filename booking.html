@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07152f">
+  <title>Reserve — NorthZone Pickleball Courts</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="booking-page date-first-booking">
+<header class="booking-topbar premium-booking-topbar">
+  <a class="booking-logo" href="index.html"><img src="assets/northzone-logo-official.png" alt="NorthZone"></a>
+  <div class="secure-label"><span>●</span> Secure booking preview</div>
+  <a class="close-flow" href="index.html">×</a>
+</header>
+
+<div class="booking-progress-wrap">
+  <div class="booking-progress booking-progress-6">
+    <button class="progress-item active" data-jump="1"><i>1</i><span><b>Date & Time</b><small>When you want to play</small></span></button>
+    <div class="progress-rule"></div>
+    <button class="progress-item" data-jump="2"><i>2</i><span><b>Available Courts</b><small>Choose one or more</small></span></button>
+    <div class="progress-rule"></div>
+    <button class="progress-item" data-jump="3"><i>3</i><span><b>Booking Type</b><small>Play, coaching, event</small></span></button>
+    <div class="progress-rule"></div>
+    <button class="progress-item" data-jump="4"><i>4</i><span><b>Add-ons</b><small>Equipment</small></span></button>
+    <div class="progress-rule"></div>
+    <button class="progress-item" data-jump="5"><i>5</i><span><b>Your Details</b><small>Contact information</small></span></button>
+    <div class="progress-rule"></div>
+    <button class="progress-item" data-jump="6"><i>6</i><span><b>Payment</b><small>Review & pay</small></span></button>
+  </div>
+</div>
+
+<main class="booking-layout">
+<section class="flow-column">
+
+  <!-- STEP 1 -->
+  <div class="flow-step active" data-step="1">
+    <div class="flow-kicker">STEP 1 OF 6</div>
+    <h1>When do you want to play?</h1>
+    <p class="flow-intro">Choose your date and time first. NorthZone will then show only the courts that are available for your selected schedule.</p>
+
+    <div class="date-carousel" id="dateCarousel"></div>
+
+    <div class="duration-row">
+      <div>
+        <span class="field-kicker">DURATION</span>
+        <h3>How long are you playing?</h3>
+      </div>
+      <div class="duration-pills" id="durationPills">
+        <button data-duration="1" class="active">1 hr</button>
+        <button data-duration="2">2 hrs</button>
+        <button data-duration="3">3 hrs</button>
+      </div>
+    </div>
+
+    <div class="time-head"><h3>Start time</h3><span id="availabilityLabel">Select a date</span></div>
+    <div class="time-grid" id="timeGrid"></div>
+    <div class="availability-legend"><span><i class="lg-available"></i>Available start time</span><span><i class="lg-selected"></i>Selected</span><span><i class="lg-booked"></i>Unavailable</span></div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="flow-step" data-step="2">
+    <div class="flow-kicker">STEP 2 OF 6</div>
+    <h1>Choose your courts.</h1>
+    <p class="flow-intro">Availability is based on <strong id="courtAvailabilityDate">your selected schedule</strong>. Unavailable courts remain visible but cannot be selected.</p>
+
+    <div class="court-availability-summary">
+      <div><span>YOUR SCHEDULE</span><strong id="availabilitySchedule">—</strong></div>
+      <div><span>AVAILABLE</span><strong id="availableCourtCount">0 of 5 courts</strong></div>
+      <button id="selectAllAvailable">Select all available</button>
+    </div>
+
+    <div class="court-option-grid availability-court-grid" id="courtOptions"></div>
+
+    <div class="selection-summary-banner">
+      <div><span>SELECTED</span><strong id="courtSelectionCount">0 courts</strong></div>
+      <p>Booking for a group? You can reserve multiple available courts in one transaction.</p>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="flow-step" data-step="3">
+    <div class="flow-kicker">STEP 3 OF 6</div>
+    <h1>What type of booking is this?</h1>
+    <p class="flow-intro">Choose the option that best describes your reservation.</p>
+
+    <div class="booking-mode-grid three-mode-grid">
+      <button class="mode-card selected" data-mode="court">
+        <div class="mode-image"><img src="assets/court-1.webp" alt="Court booking"></div>
+        <div class="mode-copy"><span class="mode-kicker">PLAY</span><h3>Court Booking</h3><p>Casual play, practice, or regular group booking.</p></div>
+        <b>✓</b>
+      </button>
+
+      <button class="mode-card coaching-mode-card" data-mode="coaching">
+        <div class="mode-image coach-image"><img src="assets/coach-raf.webp" alt="Coach Raf"></div>
+        <div class="mode-copy"><span class="mode-kicker">TRAIN</span><h3>Coaching with Coach Raf</h3><p>Book a guided coaching session with Coach Raf.</p></div>
+        <b></b>
+      </button>
+
+      <button class="mode-card" data-mode="event">
+        <div class="mode-image"><img src="assets/court-5.webp" alt="Event or group booking"></div>
+        <div class="mode-copy"><span class="mode-kicker">GROUP</span><h3>Event / Group Booking</h3><p>Corporate play, clinics, celebrations, or larger groups.</p></div>
+        <b></b>
+      </button>
+    </div>
+
+    <div class="coaching-options hidden" id="coachingOptions">
+      <div class="coach-selected-card">
+        <img src="assets/coach-raf.webp" alt="Coach Raf">
+        <div><span>YOUR COACH</span><h3>Coach Raf</h3><p>NorthZone coaching session</p></div>
+        <strong>Selected</strong>
+      </div>
+      <div class="session-type-grid" id="sessionTypes">
+        <button class="session-type selected" data-session="Private 1-on-1" data-price="900"><span>PRIVATE</span><strong>1-on-1 Coaching</strong><small>₱900 / hour</small><b>✓</b></button>
+        <button class="session-type" data-session="Semi-private" data-price="1200"><span>PAIR</span><strong>Semi-private</strong><small>₱1,200 / hour · up to 2 players</small><b></b></button>
+        <button class="session-type" data-session="Small Group" data-price="1600"><span>GROUP</span><strong>Small Group</strong><small>₱1,600 / hour · up to 4 players</small><b></b></button>
+      </div>
+    </div>
+
+    <div class="group-booking-note hidden" id="groupBookingNote">
+      <strong>Large booking approval</strong>
+      <p>Reservations involving 3 or more courts may be submitted as a booking request for NorthZone staff confirmation before final approval.</p>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="flow-step" data-step="4">
+    <div class="flow-kicker">STEP 4 OF 6</div>
+    <h1>Add what you need.</h1>
+    <p class="flow-intro">Equipment is optional and will be included in the same reservation.</p>
+    <div class="addon-stack">
+      <article class="addon-premium paddle-rental-card">
+        <div class="addon-product-image"><img src="assets/paddle-rental.png" alt="Pickleball paddle rental"></div>
+        <div class="addon-copy"><span class="addon-type">PADDLE RENTAL</span><h3>Standard Paddle</h3><p>Sample rate: ₱100 per paddle.</p><small>10 available</small></div>
+        <div class="qty-control"><button id="paddleMinus">−</button><strong id="paddleCount">0</strong><button id="paddlePlus">+</button></div>
+      </article>
+      <article class="addon-premium">
+        <div class="addon-icon machine-icon"><span>●</span></div>
+        <div class="addon-copy"><span class="addon-type">TRAINING</span><h3>Ball Machine</h3><p>Sample rate: ₱300 per reserved hour.</p><small>1 available</small></div>
+        <label class="ios-switch"><input type="checkbox" id="machineToggle"><span></span></label>
+      </article>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="flow-step" data-step="5">
+    <div class="flow-kicker">STEP 5 OF 6</div>
+    <h1>Your details.</h1>
+    <p class="flow-intro">Enter the contact information NorthZone will use for your reservation and confirmation.</p>
+    <form id="detailsForm" class="premium-form">
+      <label class="full"><span>Full name</span><input name="name" required placeholder="e.g. Juan Dela Cruz"></label>
+      <label><span>Mobile number</span><input name="mobile" required inputmode="tel" placeholder="09XX XXX XXXX"></label>
+      <label><span>Email</span><input name="email" required type="email" placeholder="you@example.com"></label>
+      <label><span>Number of players</span><select name="players"><option>1 player</option><option>2 players</option><option selected>4 players</option><option>6 players</option><option>8 players</option><option>12 players</option><option>16+ players</option></select></label>
+      <label><span>Purpose</span><select name="purpose"><option>Casual Play</option><option>Training</option><option>Corporate / Group</option><option>Clinic / Event</option><option>Other</option></select></label>
+      <label class="full"><span>Notes <em>Optional</em></span><textarea name="notes" placeholder="Anything NorthZone should know?"></textarea></label>
+      <label class="full consent-row"><input type="checkbox" required checked><span>I agree to the sample NorthZone booking and cancellation policy.</span></label>
+    </form>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="flow-step" data-step="6">
+    <div class="flow-kicker">STEP 6 OF 6</div>
+    <h1>Review and pay.</h1>
+    <p class="flow-intro">Review your reservation and choose a payment method. This prototype does not process a real transaction.</p>
+    <div class="payment-layout">
+      <div>
+        <h3 class="subheading">Payment method</h3>
+        <div class="payment-methods">
+          <label class="payment-card selected"><input type="radio" name="payment" value="GCash" checked><i class="payment-logo gcash">G</i><div><strong>GCash</strong><span>Pay with your GCash wallet</span></div><b>✓</b></label>
+          <label class="payment-card"><input type="radio" name="payment" value="Maya"><i class="payment-logo maya">M</i><div><strong>Maya</strong><span>Pay with your Maya wallet</span></div><b></b></label>
+          <label class="payment-card"><input type="radio" name="payment" value="Pay at Venue"><i class="payment-logo cash">₱</i><div><strong>Pay at Venue</strong><span>Pay at NorthZone front desk</span></div><b></b></label>
+        </div>
+      </div>
+      <div class="checkout-card">
+        <span class="checkout-label">ORDER SUMMARY</span>
+        <div id="checkoutItems"></div>
+        <div class="checkout-total"><span>Total</span><strong id="checkoutTotal">₱0</strong></div>
+        <div class="payment-security">🔒 Demo only. No payment is collected.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- confirmation -->
+  <div class="flow-step confirmation-step" data-step="7">
+    <div class="success-ring">✓</div>
+    <div class="flow-kicker" id="confirmationKicker">BOOKING PREVIEW COMPLETE</div>
+    <h1 id="confirmationTitle">You're all set.</h1>
+    <p class="flow-intro" id="confirmationCopy">This is a static preview. No real reservation or payment was created.</p>
+    <div class="confirmation-ticket" id="confirmationTicket"></div>
+    <div class="confirm-actions"><a class="pill primary big" href="index.html">Back to NorthZone</a><button class="pill secondary big" id="startAgain">Start another booking</button></div>
+  </div>
+
+</section>
+
+<aside class="sticky-summary">
+  <div class="summary-image-wrap">
+    <img id="summaryImage" src="assets/court-1.webp" alt="">
+    <div class="summary-image-tag" id="summaryTag">NorthZone</div>
+  </div>
+  <div class="summary-content">
+    <div class="summary-eyebrow">YOUR RESERVATION</div>
+    <h2 id="sumTitle">Choose your date & time</h2>
+    <p id="sumSubtitle">Availability will appear after you select a schedule.</p>
+    <div class="summary-divider"></div>
+    <div class="summary-lines" id="summaryLines"><div><span>No selections yet</span><strong>—</strong></div></div>
+    <div class="summary-divider"></div>
+    <div class="summary-total"><span>Total</span><strong id="sumTotal">₱0</strong></div>
+    <div class="summary-hold"><span>DEMO MODE</span><p>No court, equipment, or payment is being held.</p></div>
+  </div>
+</aside>
+</main>
+
+<footer class="flow-footer">
+  <button class="footer-back" id="backButton">Back</button>
+  <div class="footer-next"><span id="footerMessage">Choose a date and start time</span><button class="pill primary big" id="nextButton" disabled>Continue</button></div>
+</footer>
+<div class="toast" id="toast"></div>
+<script src="booking.js"></script>
+</body>
+</html>
