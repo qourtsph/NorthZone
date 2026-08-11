@@ -1,0 +1,35 @@
+(() => {
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const money=v=>`₱${Number(v||0).toLocaleString(undefined,{minimumFractionDigits:0,maximumFractionDigits:2})}`;
+  const date=v=>{if(!v)return '—';const d=new Date(`${String(v).slice(0,10)}T12:00:00`);return Number.isNaN(d.getTime())?String(v):d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'})};
+  const usageLabel=t=>({court_hours:'Court hours',paddle_rental:'Paddle rentals',coaching_session:'Coaching sessions',membership_discount:'Membership discount savings',member_wallet:'Member wallet'})[t]||String(t||'Benefit').replaceAll('_',' ');
+  const modelFor=a=>window.NorthZoneMembershipRegistry?.profileModel?.(a)||{member:null,pending:null,eligiblePlans:[],usage:[],walletTransactions:[],invoices:[]};
+  function inactiveMarkup(type,model){
+    const pending=model.pending,plan=window.NorthZoneMembershipRegistry?.plan?.(pending?.planId);
+    if(pending)return `<article class="portal-membership-status-card pending"><div><span>MEMBERSHIP APPLICATION</span><h3>${esc(plan?.name||'Membership')}</h3><p>Your signed subscription has been submitted. Benefits and member rates activate only after NorthZone verifies payment.</p></div><span class="membership-state-pill">Payment Verification Pending</span></article><article class="portal-membership-empty"><strong>Benefits are not active yet.</strong><p>Once verified, credits, wallet balance, usage, and renewal details appear here automatically.</p><a href="membership.html">Open Membership</a></article>`;
+    return `<article class="portal-membership-empty"><strong>No active NorthZone membership.</strong><p>${model.eligiblePlans.length?`${model.eligiblePlans.length} ${type} membership option${model.eligiblePlans.length===1?' is':'s are'} currently available.`:`No ${type} membership plan is currently published.`}</p><a href="membership.html">Explore Membership Plans</a></article>`;
+  }
+  function activeMarkup(model,cardClass='mq-panel'){
+    const m=model.member,b=m?.benefits||{},plan=b.plan||window.NorthZoneMembershipRegistry?.plan?.(m?.planId)||{};
+    const usage=Array.isArray(model.usage)?model.usage:[],walletRows=Array.isArray(model.walletTransactions)?model.walletTransactions:[],invoices=Array.isArray(model.invoices)?model.invoices:[];
+    const courtUsed=Math.max(0,Number(plan.freeCourtHours||0)-Number(b.freeCourtHoursRemaining||0));
+    const paddlesUsed=Math.max(0,Number(plan.freePaddleRentals||0)-Number(b.freePaddleRentalsRemaining||0));
+    const coachingUsed=Math.max(0,Number(plan.freeCoachingSessions||0)-Number(b.freeCoachingRemaining||0));
+    return `
+      <article class="portal-membership-status-card active"><div><span>ACTIVE MEMBERSHIP</span><h3>${esc(plan.name||'NorthZone Membership')}</h3><p>${Number(b.courtDiscountPct||0)>0?`${Number(b.courtDiscountPct)}% court discount · `:''}${b.priorityWaitlist?'Priority waitlist · ':''}${b.memberOnlyEvents?'Member-only events':''}</p></div><div class="membership-status-side"><span class="membership-state-pill active">Active</span><small>Renews ${date(m.renewalDate)}</small></div></article>
+      <div class="portal-credit-grid">
+        <article><span>COURT HOURS</span><strong>${Number(b.freeCourtHoursRemaining||0)}</strong><small>${courtUsed} of ${Number(plan.freeCourtHours||0)} used this cycle</small></article>
+        <article><span>PADDLE CREDITS</span><strong>${Number(b.freePaddleRentalsRemaining||0)}</strong><small>${paddlesUsed} of ${Number(plan.freePaddleRentals||0)} used this cycle</small></article>
+        <article><span>COACHING CREDITS</span><strong>${Number(b.freeCoachingRemaining||0)}</strong><small>${coachingUsed} of ${Number(plan.freeCoachingSessions||0)} used this cycle</small></article>
+        <article class="wallet"><span>MEMBER WALLET</span><strong>${money(b.walletBalance)}</strong><small>Available booking credit</small></article>
+      </div>
+      <div class="portal-membership-two-col">
+        <article class="${cardClass}"><div class="portal-membership-panel-head"><div><span>THIS CYCLE</span><h3>Benefit Usage</h3></div><a href="booking.html">Use Benefits</a></div><div class="portal-membership-ledger">${usage.length?usage.map(u=>`<div><div><strong>${esc(usageLabel(u.type))}</strong><span>${date(u.date)} · ${esc(u.reference||'NorthZone booking')}</span></div><b>${u.type==='membership_discount'?money(u.quantity):Number(u.quantity||0).toLocaleString()}</b></div>`).join(''):`<div class="portal-membership-ledger-empty">No membership credits consumed this cycle.</div>`}</div></article>
+        <article class="${cardClass}"><div class="portal-membership-panel-head"><div><span>WALLET / CREDITS</span><h3>Wallet Activity</h3></div><strong>${money(b.walletBalance)}</strong></div><div class="portal-membership-ledger">${walletRows.length?walletRows.slice(0,8).map(x=>`<div><div><strong>${esc(String(x.type||'Credit').replaceAll('_',' '))}</strong><span>${date(x.date)} · ${esc(x.reference||x.notes||'')}</span></div><b class="${Number(x.amount)>=0?'credit':'debit'}">${Number(x.amount)>=0?'+':''}${money(x.amount)}</b></div>`).join(''):`<div class="portal-membership-ledger-empty">No wallet activity yet.</div>`}</div></article>
+      </div>
+      <article class="${cardClass}"><div class="portal-membership-panel-head"><div><span>MEMBERSHIP PAYMENTS</span><h3>Payment History</h3></div><span>${invoices.length} record${invoices.length===1?'':'s'}</span></div><div class="portal-membership-ledger">${invoices.length?invoices.slice(0,10).map(x=>`<div><div><strong>${money(x.amount)} · ${esc(x.status||'')}</strong><span>${date(x.date)} · ${esc(x.paymentMethod||'')} ${x.paymentReference?`· Ref ${esc(x.paymentReference)}`:''}</span></div><b>${esc(x.reference||x.id||'')}</b></div>`).join(''):`<div class="portal-membership-ledger-empty">No membership payment records yet.</div>`}</div></article>`;
+  }
+  function renderPlayer(host,profile){if(!host)return;const account=window.NorthZoneMembershipRegistry?.playerAccount?.(profile),model=modelFor(account);if(!account){host.innerHTML='<article class="portal-membership-empty"><strong>Player sign-in required.</strong><p>Open My Qourts with your player profile before subscribing or using membership benefits.</p><a href="membership.html">View Membership Plans</a></article>';return}host.innerHTML=model.member?activeMarkup(model,'mq-panel'):inactiveMarkup('player',model)}
+  function renderClub(host){if(!host)return;const account=window.NorthZoneMembershipRegistry?.clubAccount?.(),model=modelFor(account);if(!account){host.innerHTML='<article class="portal-membership-empty"><strong>Club sign-in required.</strong><p>Sign in with an approved Club Portal account to view or subscribe to club membership packages.</p></article>';return}host.innerHTML=model.member?activeMarkup(model,'club-profile-card'):inactiveMarkup('club',model)}
+  window.NorthZoneMembershipProfile={renderPlayer,renderClub,money,date};
+})();
