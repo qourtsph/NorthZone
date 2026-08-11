@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#07152f"><title>Club Portal — NorthZone</title><link rel="stylesheet" href="styles.css"></head>
+<body class="cx-site club-portal-page">
+<header class="cx-header"><div class="cx-nav"><a class="cx-brand" href="index.html"><img src="assets/northzone-logo-official.png" alt="NorthZone"></a><nav aria-label="Main navigation" class="cx-desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html">Membership</a>
+      <a href="booking.html" class="cx-nav-book-link">Book a Court</a>
+    </nav><div class="cx-nav-actions">
+      <span class="cx-nav-profile-separator" aria-hidden="true"></span>
+      <div class="cx-profile-slot" aria-label="Account"></div>
+      <button aria-label="Open menu" class="cx-menu" id="cxMenu">☰</button>
+    </div>
+</div>
+<div class="cx-mobile-nav" id="cxMobileNav"><a href="index.html">Home</a><a href="events.html">Events</a><a href="membership.html">Membership</a><a href="booking.html">Book a Court</a><a class="cx-mobile-portal" href="portal.html?mode=signin">Sign In</a></div>
+</header>
+<main class="club-portal-main">
+  <section class="club-portal-signin" id="clubPortalSignIn">
+    <div class="club-portal-auth-copy"><span>CLUB PORTAL</span><h1>Your club.<br>Your bookings.<br>One private workspace.</h1><p>Authorized club representatives can access only their club profile, reservation history, payments, and booking privileges. This is separate from NorthZone Admin.</p></div>
+    <form class="club-portal-auth-card" id="clubPortalSignInForm"><span>AUTHORIZED REPRESENTATIVE</span><h2>Sign in to your Club</h2><label>Email<input id="portalEmail" type="email" required autocomplete="username" placeholder="Authorized representative email"></label><label>Password<input id="portalPassword" type="password" required autocomplete="current-password" placeholder="Password"></label><button type="submit">Sign In</button><small id="portalSignInMessage"></small><div class="club-demo-access-block"><span>SETUP PREVIEW</span><p>Registration and approval are not required for this temporary demo workspace.</p><button type="button" id="portalDemoAccess">Preview Demo Club Portal</button></div><div class="portal-register-link">Not yet registered? <a href="club-register.html">Register a Club →</a></div></form>
+  </section>
+
+  <section class="club-workspace hidden" id="clubWorkspace">
+    <div class="club-workspace-hero"><div class="club-workspace-identity"><div class="club-workspace-logo" id="portalClubLogo"><img class="hidden" id="portalClubLogoImage" alt="Club logo"><span id="portalClubLogoFallback">CL</span></div><div><div class="club-workspace-label-row"><span>APPROVED CLUB</span><b class="club-demo-badge hidden" id="clubDemoPreviewBadge">DEMO PREVIEW</b></div><h1 id="portalClubName">Club</h1><p id="portalClubMeta"></p></div></div><div class="club-workspace-actions"><a href="booking.html?context=club">+ Book Courts</a><button class="hidden" id="portalResetDemo">Reset Demo Data</button><button id="portalSignOut">Sign Out</button></div></div>
+    <div class="club-private-note"><strong>Private Club Workspace</strong><span>Only this club's own records and privileges are shown here. Club accounts do not have access to NorthZone Admin.</span></div>
+    <nav class="club-portal-tabs portal-secondary-nav" aria-label="Club Portal navigation"><button class="active" data-club-tab="overview">Dashboard</button><button data-club-tab="feed">Feed</button><button data-club-tab="announcements">Announcements</button><button data-club-tab="leaderboard">Leaderboard</button><button data-club-tab="praise">Praise</button><button data-club-tab="reservations">Reservations</button><button data-club-tab="payments">Payments</button><button data-club-tab="membership">Membership</button><button data-club-tab="profile">Club Profile</button><button data-club-tab="access">Access</button></nav>
+
+    <div class="club-tab-panel active" data-club-panel="overview">
+      <div class="portal-view-heading club-dashboard-heading">
+        <div><span>CLUB DASHBOARD</span><h2>Club overview</h2><p>Only the information a club representative needs at a glance.</p></div>
+        <a class="portal-view-primary" href="booking.html?context=club">+ Book Courts</a>
+      </div>
+
+      <div class="club-metric-grid">
+        <article><span>UPCOMING / PENDING</span><strong id="clubMetricBookings">0</strong><small>Reservation requests</small></article>
+        <article><span>PAYMENTS</span><strong id="clubMetricPayments">0</strong><small>Payment records</small></article>
+        <article><span>MEMBERS</span><strong id="clubMetricMembers">—</strong><small>Registered members</small></article>
+        <article><span>STATUS</span><strong class="status" id="clubMetricStatus">Approved</strong><small>Club Portal access</small></article>
+      </div>
+
+      <div class="club-dashboard-grid">
+        <article class="club-panel-card">
+          <div class="club-panel-head"><div><span>NEXT BOOKING</span><h2>Reservation activity</h2></div><a href="#" data-go-club-tab="reservations">View Reservations</a></div>
+          <div id="clubOverviewBooking"></div>
+        </article>
+
+        <article class="club-panel-card club-announcement-preview-card">
+          <div class="club-panel-head"><div><span>LATEST ANNOUNCEMENT</span><h2>Member update</h2></div><a href="#" data-go-club-tab="announcements">View Announcements</a></div>
+          <div id="clubAnnouncementPreview"></div>
+        </article>
+
+        <article class="club-panel-card club-leaderboard-preview-card">
+          <div class="club-panel-head"><div><span>LEADERBOARD</span><h2>Competitive snapshot</h2></div><a href="#" data-go-club-tab="leaderboard">View Leaderboard</a></div>
+          <div id="clubLeaderboardPreview"></div>
+        </article>
+
+        <article class="club-panel-card club-praise-preview-card">
+          <div class="club-panel-head"><div><span>QOURTS PRAISE</span><h2>Community recognition</h2></div><a href="#" data-go-club-tab="praise">View Praise</a></div>
+          <div id="clubPraisePreview"></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="club-tab-panel" data-club-panel="feed">
+      <article class="club-panel-card club-community-feed-card">
+        <div class="club-panel-head club-community-feed-head">
+          <div>
+            <span>CLUB COMMUNITY</span>
+            <h2>Feed</h2>
+            <p>Announcements and community Praise in one place. Member posts will join this feed once the moderated posting workflow is enabled.</p>
+          </div>
+          <div class="club-feed-count"><strong id="clubFeedCount">0</strong><span>Updates</span></div>
+        </div>
+        <div class="portal-feed-filters" id="clubFeedFilters">
+          <button class="active" data-club-feed-filter="all">All</button>
+          <button data-club-feed-filter="posts">Posts</button>
+          <button data-club-feed-filter="announcements">Announcements</button>
+          <button data-club-feed-filter="praise">Praise</button>
+        </div>
+        <div id="clubCommunityFeed" class="portal-community-feed"></div>
+      </article>
+    </div>
+
+    <div class="club-tab-panel" data-club-panel="announcements">
+      <div class="club-announcements-layout">
+        <article class="club-panel-card club-announcement-composer">
+          <div class="club-panel-head">
+            <div><span>CLUB COMMUNICATION</span><h2 id="clubAnnouncementFormTitle">New Announcement</h2><p>Create updates for registered club members. Drafts stay private to club representatives until published.</p></div>
+          </div>
+          <form id="clubAnnouncementForm">
+            <input type="hidden" id="clubAnnouncementId">
+            <label>Title
+              <input id="clubAnnouncementTitle" maxlength="120" placeholder="e.g. Saturday Open Play schedule" required>
+            </label>
+            <label>Message
+              <textarea id="clubAnnouncementBody" maxlength="2000" rows="7" placeholder="Write the announcement..." required></textarea>
+            </label>
+            <div class="club-announcement-photo-field">
+              <div class="club-announcement-photo-head">
+                <div>
+                  <strong>Attach Photo</strong>
+                  <small>Optional. Add one supporting image to make the announcement more visible.</small>
+                </div>
+                <button type="button" class="secondary hidden" id="clubAnnouncementPhotoRemove">Remove Photo</button>
+              </div>
+              <label class="club-announcement-photo-picker">Choose Photo
+                <input id="clubAnnouncementPhoto" type="file" accept="image/png,image/jpeg,image/webp">
+              </label>
+              <div id="clubAnnouncementPhotoPreviewWrap" class="club-announcement-photo-preview hidden">
+                <img id="clubAnnouncementPhotoPreview" alt="Announcement attachment preview">
+                <div>
+                  <strong>Photo attached</strong>
+                  <small id="clubAnnouncementPhotoMeta">Ready to include in this announcement.</small>
+                </div>
+              </div>
+            </div>
+            <div class="club-announcement-form-grid">
+              <label>Category
+                <select id="clubAnnouncementCategory">
+                  <option value="general">General</option>
+                  <option value="event">Event</option>
+                  <option value="schedule">Schedule</option>
+                  <option value="reminder">Reminder</option>
+                </select>
+              </label>
+              <label>Priority
+                <select id="clubAnnouncementPriority">
+                  <option value="normal">Normal</option>
+                  <option value="high">High</option>
+                </select>
+              </label>
+              <label>Status
+                <select id="clubAnnouncementStatus">
+                  <option value="draft">Draft</option>
+                  <option value="published">Published</option>
+                </select>
+              </label>
+              <label>Expires <small>Optional</small>
+                <input id="clubAnnouncementExpires" type="date">
+              </label>
+            </div>
+            <label class="club-announcement-pin"><input id="clubAnnouncementPinned" type="checkbox"> <span>Pin this announcement to the top</span></label>
+            <div class="club-announcement-audience"><span>AUDIENCE</span><strong>Registered Club Members</strong><small>Audience selection will expand when member groups and roles are connected to the backend.</small></div>
+            <div class="club-announcement-form-actions">
+              <button type="submit" id="clubAnnouncementSave">Save Announcement</button>
+              <button type="button" class="secondary hidden" id="clubAnnouncementCancel">Cancel Edit</button>
+            </div>
+            <small id="clubAnnouncementFormMessage"></small>
+          </form>
+        </article>
+
+        <article class="club-panel-card club-announcement-feed-card">
+          <div class="club-panel-head club-announcement-feed-head">
+            <div><span>ANNOUNCEMENT BOARD</span><h2>Club Announcements</h2><p>Newest updates appear first, with pinned announcements kept at the top.</p></div>
+            <div class="club-announcement-count"><strong id="clubAnnouncementCount">0</strong><span>Total</span></div>
+          </div>
+          <div class="club-announcement-filters" id="clubAnnouncementFilters">
+            <button class="active" data-announcement-filter="all">All</button>
+            <button data-announcement-filter="published">Published</button>
+            <button data-announcement-filter="draft">Drafts</button>
+            <button data-announcement-filter="pinned">Pinned</button>
+          </div>
+          <div id="clubAnnouncementList" class="club-announcement-list"></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="club-tab-panel" data-club-panel="leaderboard">
+      <article class="club-panel-card club-leaderboard-card">
+        <div class="club-panel-head club-leaderboard-head">
+          <div><span>REGISTERED MEMBERS</span><h2>Club Leaderboard</h2><p>Only active registered members are eligible. Statistics come from verified club matches—not an invented rating.</p></div>
+          <div class="club-leaderboard-count"><strong id="clubLeaderboardMemberCount">0</strong><span>Eligible members</span></div>
+        </div>
+        <div class="club-leaderboard-toolbar">
+          <div class="club-period-filter" id="clubLeaderboardPeriods">
+            <button class="active" data-period="month">This Month</button>
+            <button data-period="year">This Year</button>
+            <button data-period="all">All Time</button>
+          </div>
+          <label>Rank by
+            <select id="clubLeaderboardMetric">
+              <option value="wins">Wins</option>
+              <option value="winPct">Win %</option>
+              <option value="matches">Matches</option>
+              <option value="pe">Points Earned</option>
+              <option value="pq">Point Quotient</option>
+            </select>
+          </label>
+        </div>
+        <div class="club-leaderboard-context"><span id="clubLeaderboardMatchCount">0 verified matches</span><small>W–L = wins/losses · PE = points earned · PC = points conceded · PQ = PE ÷ (PE + PC)</small></div>
+        <div id="clubLeaderboardPodium" class="club-leaderboard-podium"></div>
+        <div id="clubLeaderboardTable" class="club-leaderboard-table"></div>
+        <div class="club-leaderboard-footnote">Leaderboard eligibility follows the club's registered-member list. Production match verification and member registration will be authoritative from the database.</div>
+      </article>
+    </div>
+
+    <div class="club-tab-panel" data-club-panel="praise">
+      <article class="club-panel-card club-praise-board-card">
+        <div class="club-panel-head club-praise-board-head">
+          <div>
+            <span>QOURTS PRAISE</span>
+            <h2>Club Praise Board</h2>
+            <p>Community recognition earned from verified play. This is separate from competitive standings and Qourts Rating.</p>
+          </div>
+          <div class="club-praise-total"><strong id="clubPraiseTotal">0</strong><span>Praise received</span></div>
+        </div>
+
+        <div class="club-praise-toolbar">
+          <div class="club-period-filter" id="clubPraisePeriods">
+            <button class="active" data-praise-period="month">This Month</button>
+            <button data-praise-period="year">This Year</button>
+            <button data-praise-period="all">All Time</button>
+          </div>
+          <label>Recognition
+            <select id="clubPraiseCategory"><option value="all">All Praise</option></select>
+          </label>
+        </div>
+
+        <div class="club-praise-context">
+          <span id="clubPraiseUnique">0 unique players giving Praise</span>
+          <small>Rank = total category recognitions · Unique = different players who gave the recognition.</small>
+        </div>
+
+        <div id="clubPraisePodium" class="club-praise-podium"></div>
+        <div id="clubPraiseTable" class="club-praise-table"></div>
+
+        <div class="club-praise-integrity">
+          <strong>Praise ≠ Rating</strong>
+          <span>Praise reflects what the community recognizes in a player. It does not increase or decrease competitive rating.</span>
+        </div>
+      </article>
+
+      <article class="club-panel-card club-praise-moderation-card">
+        <div class="club-panel-head">
+          <div><span>COMMUNITY MODERATION</span><h2>Recent Praise</h2><p>Club representatives may remove Praise that violates community rules, contains inappropriate notes, or is clearly abusive.</p></div>
+        </div>
+        <div id="clubRecentPraise" class="club-recent-praise"></div>
+      </article>
+    </div>
+
+    <div class="club-tab-panel" data-club-panel="reservations"><div class="club-panel-card"><div class="club-panel-head"><div><span>RESERVATIONS</span><h2>Club booking history</h2><p>Only bookings made under this approved club account appear here.</p></div><a class="club-primary-link" href="booking.html?context=club">Book Courts</a></div><div id="clubReservationList" class="club-history-list"></div></div></div>
+    <div class="club-tab-panel" data-club-panel="payments"><div class="club-panel-card"><div class="club-panel-head"><div><span>PAYMENTS</span><h2>Payment history</h2><p>Track amounts submitted through club bookings and their verification status.</p></div></div><div id="clubPaymentList" class="club-history-list"></div></div></div>
+
+    <div class="club-tab-panel" data-club-panel="membership">
+      <div class="portal-view-heading club-dashboard-heading"><div><span>MEMBERSHIP & CREDITS</span><h2>Club membership</h2><p>Track the club plan, special booking benefits, remaining credits, member wallet, usage, and membership payments.</p></div><a class="club-primary-link" href="membership.html">Membership Plans</a></div>
+      <div id="clubMembershipWorkspace" class="portal-membership-workspace"></div>
+    </div>
+
+    <div class="club-tab-panel" data-club-panel="profile">
+      <article class="club-panel-card club-booking-access-card">
+        <div class="club-panel-head"><div><span>BOOKING ACCESS</span><h2>Pricing & privileges</h2><p>Admin-controlled club booking terms belong with club account management—not the Dashboard.</p></div></div>
+        <div id="clubPricingPrivileges"></div>
+      </article>
+
+      <article class="club-panel-card club-personalization-card">
+        <div class="club-panel-head">
+          <div><span>PERSONALIZE PROFILE</span><h2>Make this workspace yours.</h2><p>Add your club logo and your own representative photo. These appear inside the Club Portal only.</p></div>
+        </div>
+        <div class="club-personalization-grid">
+          <section class="club-image-editor">
+            <div class="club-image-editor-head"><div><span>CLUB IDENTITY</span><h3>Club Logo</h3></div><small>PNG, JPG or WebP</small></div>
+            <div class="club-image-editor-body">
+              <div class="club-image-preview logo" id="clubLogoPreview"><img class="hidden" id="clubLogoPreviewImage" alt="Club logo preview"><span id="clubLogoPreviewFallback">CL</span></div>
+              <div class="club-image-controls">
+                <p>Use a square or horizontal logo with a clean background. Large files are resized automatically.</p>
+                <input class="club-image-input" id="clubLogoUpload" type="file" accept="image/png,image/jpeg,image/webp">
+                <div><label class="club-upload-button" for="clubLogoUpload">Upload / Replace</label><button class="club-remove-image" type="button" id="clubLogoRemove">Remove</button></div>
+              </div>
+            </div>
+          </section>
+          <section class="club-image-editor">
+            <div class="club-image-editor-head"><div><span>YOUR PROFILE</span><h3>Representative Photo</h3></div><small id="profileRepresentativeName">Current representative</small></div>
+            <div class="club-image-editor-body">
+              <div class="club-image-preview avatar" id="representativePhotoPreview"><img class="hidden" id="representativePhotoPreviewImage" alt="Representative profile photo preview"><span id="representativePhotoPreviewFallback">CR</span></div>
+              <div class="club-image-controls">
+                <p>Add a profile picture so club members and NorthZone can recognize the authorized representative.</p>
+                <input class="club-image-input" id="representativePhotoUpload" type="file" accept="image/png,image/jpeg,image/webp">
+                <div><label class="club-upload-button" for="representativePhotoUpload">Upload / Replace</label><button class="club-remove-image" type="button" id="representativePhotoRemove">Remove</button></div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="club-personalization-footer">
+          <div><strong>Setup mode</strong><span>Images are stored in this browser for now. Production uploads will move to secure cloud storage.</span></div>
+          <button type="button" id="saveClubPersonalization">Save Personalization</button>
+          <small id="personalizationSaveMessage"></small>
+        </div>
+      </article>
+
+      <div class="club-profile-layout"><article class="club-panel-card"><div class="club-panel-head"><div><span>CLUB PROFILE</span><h2>Public & account details</h2></div></div><div class="club-locked-fields"><div><span>Club Name</span><strong id="profileClubName">—</strong><small>Requires NorthZone approval to change.</small></div><div><span>Club ID</span><strong id="profileClubId">—</strong><small>Permanent account reference.</small></div><div><span>Status</span><strong id="profileClubStatus">—</strong></div></div><form class="club-profile-form" id="clubProfileForm"><label>Short description<textarea id="profileDescription" maxlength="400" placeholder="Tell NorthZone about your club"></textarea></label><label>Approximate members<input id="profileMemberCount" type="number" min="0" max="10000"></label><label>Home city / area<input id="profileHomeArea" placeholder="e.g. Pampanga"></label><label>Billing name<input id="profileBillingName" placeholder="Club or organization billing name"></label><button type="submit">Save Profile</button><small id="profileSaveMessage"></small></form></article><article class="club-panel-card club-profile-rules"><span>PROFILE CONTROL</span><h2>What can the club update?</h2><div><strong>Editable now</strong><p>Club logo, your representative photo, description, approximate member count, home area, and billing name.</p></div><div><strong>NorthZone approval required</strong><p>Club name, status, primary representative, booking privileges, and negotiated pricing.</p></div></article></div>
+    </div>
+
+    <div class="club-tab-panel" data-club-panel="access"><div class="club-panel-card"><div class="club-panel-head"><div><span>AUTHORIZED REPRESENTATIVES</span><h2>Club access</h2><p>These roles apply only to the Club Portal. They never grant access to NorthZone Admin.</p></div></div><div id="clubRepresentativeList" class="club-rep-list"></div></div></div>
+  </section>
+</main>
+<footer class="cx-footer compact"><div class="cx-footer-bottom"><span>NorthZone Pickleball Courts</span><span>Club technology powered by <strong>Qourts</strong></span><a href="index.html">Back to NorthZone</a></div></footer>
+<script src="membership-public-snapshot.js?v=14.24.1"></script>
+<script src="integration-contract.js?v=14.24.1"></script>
+<script src="coach-review.js?v=14.23"></script>
+<script src="club-registry.js?v=14.24.3"></script><script src="membership-registry.js?v=14.24.1"></script><script src="membership-profile.js?v=14.24.1"></script><script src="club-portal.js?v=14.24"></script><script src="account-header.js?v=14.24.3"></script>
+<script data-v14243-mobile-nav>
+const nzMenu=document.getElementById('cxMenu'),nzMobile=document.getElementById('cxMobileNav');
+nzMenu?.addEventListener('click',()=>nzMobile?.classList.toggle('show'));
+nzMobile?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nzMobile.classList.remove('show')));
+</script>
+</body></html>

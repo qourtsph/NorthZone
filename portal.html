@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07152f">
+<title>My Portal — NorthZone</title>
+<meta name="description" content="Access your NorthZone player or club portal.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="cx-site cx-inner-page portal-page">
+<header class="cx-header">
+  <div class="cx-nav">
+    <a class="cx-brand" href="index.html"><img src="assets/northzone-logo-official.png" alt="NorthZone"></a>
+    <nav aria-label="Main navigation" class="cx-desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html">Membership</a>
+      <a href="booking.html" class="cx-nav-book-link">Book a Court</a>
+    </nav>
+    <div class="cx-nav-actions">
+      <span class="cx-nav-profile-separator" aria-hidden="true"></span>
+      <div class="cx-profile-slot" aria-label="Account"></div>
+      <button aria-label="Open menu" class="cx-menu" id="cxMenu">☰</button>
+    </div>
+</div>
+<div class="cx-mobile-nav" id="cxMobileNav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html">Membership</a>
+      <a href="booking.html">Book a Court</a>
+      <a class="cx-mobile-portal" href="portal.html?mode=signin">Sign In</a>
+    </div>
+</header>
+
+<main class="portal-main">
+  <section class="portal-hero">
+    <div class="portal-hero-copy">
+      <span class="cx-eyebrow">MY PORTAL</span>
+      <h1>One entry point.<br>Your NorthZone access.</h1>
+      <p>Choose the workspace that belongs to you. Individual players access My Qourts, while approved clubs use their private Club Portal.</p>
+    </div>
+    <div class="portal-security-note">
+      <span>PRIVATE ACCESS</span>
+      <strong>Separate player and club workspaces.</strong>
+      <p>Club accounts never grant access to NorthZone Admin.</p>
+    </div>
+  </section>
+
+  <section class="portal-choice-section">
+    <div class="portal-choice-grid">
+      <article class="portal-choice-card player">
+        <div class="portal-card-icon">Q</div>
+        <span>INDIVIDUAL / PLAYER</span>
+        <h2>My Qourts</h2>
+        <p>Access your player identity, bookings, Open Play activity, Qourts Record, and future Qourts Rating.</p>
+        <div class="portal-session-status" id="playerPortalStatus">
+          <i></i>
+          <span>No local player profile detected.</span>
+        </div>
+        <a class="portal-primary-action" id="playerPortalAction" href="my-qourts.html">Open Player Portal <b>→</b></a>
+        <small>Player identity and production authentication will be handled through Qourts.</small>
+      </article>
+
+      <article class="portal-choice-card club">
+        <div class="portal-card-icon">NZ</div>
+        <span>APPROVED CLUB</span>
+        <h2>Club Portal</h2>
+        <p>Access club reservations, payment history, profile details, booking privileges, and approved club rates.</p>
+        <div class="portal-session-status" id="clubPortalStatus">
+          <i></i>
+          <span>Club sign-in required.</span>
+        </div>
+        <a class="portal-primary-action portal-demo-action" id="clubDemoPortalAction" href="club-portal.html?demo=1">Preview Club Portal <b>→</b></a>
+        <div class="portal-club-secondary-actions">
+          <a class="portal-secondary-action" id="clubPortalAction" href="club-portal.html">Club Sign In</a>
+          <a class="portal-secondary-action" href="club-register.html">Register a Club</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="portal-help-row">
+      <div>
+        <span>NOT SURE WHICH ONE?</span>
+        <strong>Playing for yourself? Choose Player.</strong>
+        <p>Use Club only if you are an authorized representative of an approved NorthZone club account.</p>
+      </div>
+      <a href="booking.html">Continue without signing in →</a>
+    </div>
+  </section>
+</main>
+
+<footer class="cx-footer compact">
+  <div class="cx-footer-bottom">
+    <span>NorthZone Pickleball Courts</span>
+    <span>Player & booking technology powered by <strong>Qourts</strong></span>
+    <a href="index.html">Back to NorthZone</a>
+  </div>
+</footer>
+
+<script src="integration-contract.js?v=14.23"></script>
+<script src="coach-review.js?v=14.23"></script>
+<script src="club-registry.js?v=14.24.3"></script>
+<script src="portal.js"></script>
+<script>
+const menu=document.getElementById('cxMenu'),mobile=document.getElementById('cxMobileNav');
+menu?.addEventListener('click',()=>mobile.classList.toggle('show'));
+mobile?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobile.classList.remove('show')));
+</script>
+<script src="account-header.js?v=14.24.3"></script>
+</body>
+</html>

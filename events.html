@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07152f">
+<title>Events — NorthZone</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="cx-site cx-inner-page">
+<header class="cx-header">
+  <div class="cx-nav">
+    <a class="cx-brand" href="index.html"><img src="assets/northzone-logo-official.png" alt="NorthZone"></a>
+    <nav aria-label="Main navigation" class="cx-desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="events.html" class="active">Events</a>
+      <a href="membership.html">Membership</a>
+      <a href="booking.html" class="cx-nav-book-link">Book a Court</a>
+    </nav>
+    <div class="cx-nav-actions">
+      <span class="cx-nav-profile-separator" aria-hidden="true"></span>
+      <div class="cx-profile-slot" aria-label="Account"></div>
+      <button aria-label="Open menu" class="cx-menu" id="cxMenu">☰</button>
+    </div>
+</div>
+<div class="cx-mobile-nav" id="cxMobileNav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html">Membership</a>
+      <a href="booking.html">Book a Court</a>
+      <a class="cx-mobile-portal" href="portal.html?mode=signin">Sign In</a>
+    </div>
+</header>
+<main class="cx-inner">
+<section class="events-hero">
+  <span class="cx-eyebrow light">PLAY & COMPETE</span>
+  <h1>Events at NorthZone.</h1>
+  <p>Tournaments, leagues, club activities, and NorthZone competitive play will be published here.</p>
+</section>
+<section class="events-content">
+  <div class="events-filter"><button class="active">All</button><button>Tournaments</button><button>Leagues</button><button>Open Play</button></div>
+  <article class="events-empty">
+    <div>🏆</div>
+    <span class="cx-eyebrow">EVENT CALENDAR</span>
+    <h2>No public events have been published yet.</h2>
+    <p>Once NorthZone publishes an event, this page will show registration status, category/division, schedules, results, and Qourts Record eligibility.</p>
+    <div><a class="cx-btn cx-btn-dark" href="booking.html">Book a Court</a><a class="mq-secondary" href="my-qourts.html">Open My Qourts</a></div>
+  </article>
+  <div class="events-system-grid">
+    <article><span>REGISTRATION</span><h3>One player identity.</h3><p>Future event registration can use Qourts ID instead of recreating player data every tournament.</p></article>
+    <article><span>LIVE EVENT</span><h3>Schedules & results.</h3><p>Players can follow match times, courts, standings, and “You’re Next” status from their phone.</p></article>
+    <article><span>QOURTS RECORD</span><h3>Verified competition history.</h3><p>Eligible results can become part of a player’s permanent competitive record.</p></article>
+  </div>
+</section>
+</main>
+<footer class="cx-footer compact">
+  <div class="cx-footer-bottom"><span>NorthZone Pickleball Courts</span><span>Powered by <strong>Qourts</strong></span><a href="index.html">Back to NorthZone</a></div>
+</footer>
+<script src="integration-contract.js?v=14.23"></script>
+<script src="coach-review.js?v=14.23"></script>
+<script>
+const menu=document.getElementById('cxMenu'),mobile=document.getElementById('cxMobileNav');
+menu?.addEventListener('click',()=>mobile.classList.toggle('show'));
+</script>
+<script src="club-registry.js?v=14.24.3"></script>
+<script src="account-header.js?v=14.24.3"></script>
+</body></html>

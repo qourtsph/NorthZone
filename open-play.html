@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07152f">
+<title>Open Play — NorthZone</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="cx-site cx-inner-page">
+<header class="cx-header">
+  <div class="cx-nav">
+    <a class="cx-brand" href="index.html"><img src="assets/northzone-logo-official.png" alt="NorthZone"></a>
+    <nav aria-label="Main navigation" class="cx-desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html">Membership</a>
+      <a href="booking.html" class="cx-nav-book-link">Book a Court</a>
+    </nav>
+    <div class="cx-nav-actions">
+      <span class="cx-nav-profile-separator" aria-hidden="true"></span>
+      <div class="cx-profile-slot" aria-label="Account"></div>
+      <button aria-label="Open menu" class="cx-menu" id="cxMenu">☰</button>
+    </div>
+</div>
+<div class="cx-mobile-nav" id="cxMobileNav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html">Membership</a>
+      <a href="booking.html">Book a Court</a>
+      <a class="cx-mobile-portal" href="portal.html?mode=signin">Sign In</a>
+    </div>
+</header>
+<main class="cx-inner">
+<section class="op-hero">
+  <div>
+    <span class="cx-eyebrow light">NORTHZONE OPEN PLAY</span>
+    <h1>Queue smarter.<br>Play fairer.</h1>
+    <p>Open Play powered by Qourts is designed to balance skill, waiting time, rest, partner preferences, and recent match history.</p>
+    <div class="cx-hero-actions"><a class="cx-btn cx-btn-light" href="#join">Join Open Play</a><a class="cx-btn cx-btn-glass" href="my-qourts.html">Open My Qourts</a></div>
+  </div>
+  <div class="op-status-demo">
+    <small>PLAYER STATUS</small>
+    <strong>YOU’RE NEXT</strong>
+    <span>Stay ready · Court assignment pending</span>
+    <div><b>Smart Queue</b><em>Fair match selected</em></div>
+  </div>
+</section>
+
+<section class="op-how">
+  <div class="cx-section-heading"><span>HOW IT WORKS</span><h2>From ready to playing.</h2></div>
+  <div class="op-steps">
+    <article><b>01</b><h3>Identify yourself</h3><p>Use your Qourts ID so your play can connect to your Qourts Record.</p></article>
+    <article><b>02</b><h3>Join Smart Queue</h3><p>Your skill, rest, wait time, and partner status become part of matchmaking.</p></article>
+    <article><b>03</b><h3>See “You’re Next”</h3><p>Your phone tells you when Smart Queue has selected your upcoming match.</p></article>
+    <article><b>04</b><h3>Play & record</h3><p>Verified results feed W/L, PE, PC, PQ, and eventually Qourts Rating.</p></article>
+  </div>
+</section>
+
+<section class="op-join" id="join">
+  <div class="op-join-copy">
+    <span class="cx-eyebrow">PLAYER QUEUE</span>
+    <h2>Join from your phone.</h2>
+    <p>This static client build demonstrates the phone workflow. Shared live queue state across the player and NorthZone admin will activate when the production backend is connected.</p>
+  </div>
+  <div class="op-join-card">
+    <label>Qourts ID / email / mobile<input id="opIdentity" placeholder="Enter your player identity"></label>
+    <label>Skill Level<select id="opSkill"><option>Beginner</option><option>Novice</option><option>Low Inter</option><option>High Inter</option><option>Advance</option></select></label>
+    <div class="op-bind">
+      <label><input id="opBound" type="checkbox"> I’m playing with a partner</label>
+      <select id="opBindType" disabled><option value="temporary">Temporary partner</option><option value="permanent">Permanent partner</option></select>
+    </div>
+    <button class="cx-btn cx-btn-dark" id="opJoin">Join Smart Queue</button>
+    <div class="op-local-status" id="opLocalStatus"><span>STATUS</span><strong>READY TO QUEUE</strong><small>Static preview · local device only</small></div>
+  </div>
+</section>
+
+<section class="op-stats">
+  <div class="cx-section-heading"><span>PLAYER PERFORMANCE</span><h2>Your record should mean something.</h2><p>Open Play results are structured so the same verified data can support leaderboards today and a reputable Qourts Rating later.</p></div>
+  <div class="op-stat-grid">
+    <article><span>W</span><strong>Wins</strong><p>Verified match wins.</p></article>
+    <article><span>L</span><strong>Losses</strong><p>Verified match losses.</p></article>
+    <article><span>PE</span><strong>Points Earned</strong><p>Total points scored.</p></article>
+    <article><span>PC</span><strong>Points Conceded</strong><p>Total points allowed.</p></article>
+    <article><span>PQ</span><strong>Points Quotient</strong><p>PE ÷ (PE + PC).</p></article>
+  </div>
+</section>
+</main>
+<script src="integration-contract.js?v=14.23"></script>
+<script src="coach-review.js?v=14.23"></script>
+<script>
+const bound=document.getElementById('opBound'),bind=document.getElementById('opBindType'),join=document.getElementById('opJoin'),status=document.getElementById('opLocalStatus');
+bound.onchange=()=>bind.disabled=!bound.checked;
+join.onclick=()=>{
+ const id=document.getElementById('opIdentity').value.trim();
+ if(!id){status.innerHTML='<span>STATUS</span><strong>IDENTITY REQUIRED</strong><small>Enter your Qourts ID, email, or mobile.</small>';return}
+ status.innerHTML='<span>STATUS</span><strong>WAITING</strong><small>Demo queue joined on this device.</small>';
+ join.textContent='Leave Smart Queue';join.classList.add('danger-local');
+ join.onclick=()=>{status.innerHTML='<span>STATUS</span><strong>READY TO QUEUE</strong><small>Static preview · local device only</small>';location.reload()};
+};
+</script>
+<footer class="cx-footer compact">
+  <div class="cx-footer-bottom"><span>NorthZone Pickleball Courts</span><span>Powered by <strong>Qourts</strong></span><a href="index.html">Back to NorthZone</a></div>
+</footer>
+<script>
+const menu=document.getElementById('cxMenu'),mobile=document.getElementById('cxMobileNav');
+menu?.addEventListener('click',()=>mobile.classList.toggle('show'));
+</script>
+<script src="club-registry.js?v=14.24.3"></script>
+<script src="account-header.js?v=14.24.3"></script>
+</body></html>

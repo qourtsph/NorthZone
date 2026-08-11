@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07152f">
+<title>Membership — NorthZone</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="cx-site cx-inner-page membership-page-v2">
+<header class="cx-header">
+  <div class="cx-nav">
+    <a class="cx-brand" href="index.html"><img src="assets/northzone-logo-official.png" alt="NorthZone"></a>
+    <nav aria-label="Main navigation" class="cx-desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html" class="active">Membership</a>
+      <a href="booking.html" class="cx-nav-book-link">Book a Court</a>
+    </nav>
+    <div class="cx-nav-actions">
+      <span class="cx-nav-profile-separator" aria-hidden="true"></span>
+      <div class="cx-profile-slot" aria-label="Account"></div>
+      <button aria-label="Open menu" class="cx-menu" id="cxMenu">☰</button>
+    </div>
+</div>
+<div class="cx-mobile-nav" id="cxMobileNav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html">Membership</a>
+      <a href="booking.html">Book a Court</a>
+      <a class="cx-mobile-portal" href="portal.html?mode=signin">Sign In</a>
+    </div>
+</header>
+<main class="cx-inner membership-v2">
+  <section class="membership-hero membership-hero-v2">
+    <div><span class="cx-eyebrow light">NORTHZONE MEMBERSHIP</span><h1>More value from<br>every session.</h1><p>Plans, pricing, credits, and booking privileges come directly from NorthZone Admin. Sign in as a Player or approved Club to subscribe.</p></div>
+    <div class="membership-profile membership-account-card" id="membershipAccountCard"><small>ACCOUNT STATUS</small><strong>Sign in to subscribe</strong><span>Player or approved Club account required</span><a href="portal.html">Open My Portal →</a></div>
+  </section>
+
+  <section class="membership-content membership-v2-content">
+    <div class="membership-active-banner hidden" id="membershipActiveBanner"></div>
+    <div class="membership-pending-banner hidden" id="membershipPendingBanner"></div>
+
+    <div class="cx-section-heading membership-plan-heading"><span>MEMBERSHIP PLANS</span><h2>Choose the plan that fits how you play.</h2><p id="membershipPlanSource">Loading current plans from NorthZone Admin…</p></div>
+    <div class="membership-plan-grid-v2" id="membershipPlanGrid"><div class="membership-loading">Loading membership plans…</div></div>
+
+    <section class="membership-how-it-works">
+      <div class="cx-section-heading"><span>HOW IT WORKS</span><h2>From plan selection to member pricing.</h2></div>
+      <div class="membership-process-grid">
+        <article><b>01</b><strong>Choose a plan</strong><span>Only Admin-published plans are shown.</span></article>
+        <article><b>02</b><strong>Sign in</strong><span>Use your Player account or approved Club account.</span></article>
+        <article><b>03</b><strong>Sign & pay</strong><span>Review the exact plan, type your name, then submit payment details.</span></article>
+        <article><b>04</b><strong>NorthZone verifies</strong><span>Benefits activate only after payment verification.</span></article>
+        <article><b>05</b><strong>Use one benefit</strong><span>At booking checkout, select one eligible discount, credit, or wallet benefit.</span></article>
+      </div>
+    </section>
+
+    <div class="membership-cta"><div><h2>Already a member?</h2><p>Open your Player or Club profile to monitor your plan, remaining credits, wallet balance, usage, and payments.</p></div><a class="cx-btn cx-btn-light" href="portal.html">Open My Portal</a></div>
+  </section>
+</main>
+
+<div class="membership-checkout-overlay hidden" id="membershipCheckout" role="dialog" aria-modal="true" aria-labelledby="membershipCheckoutTitle">
+  <div class="membership-checkout-dialog">
+    <button class="membership-checkout-close" id="membershipCheckoutClose" aria-label="Close">×</button>
+    <div class="membership-checkout-head"><span class="cx-eyebrow">MEMBERSHIP CHECKOUT</span><h2 id="membershipCheckoutTitle">Membership</h2><p id="membershipCheckoutSubtitle"></p></div>
+    <div class="membership-checkout-steps"><span class="active" data-ms-step-indicator="1">1 · Review</span><span data-ms-step-indicator="2">2 · Sign</span><span data-ms-step-indicator="3">3 · Payment</span><span data-ms-step-indicator="4">4 · Submitted</span></div>
+
+    <section class="membership-checkout-step active" data-ms-step="1">
+      <div id="membershipCheckoutAccount" class="membership-checkout-account"></div>
+      <div id="membershipCheckoutPlan" class="membership-checkout-plan"></div>
+      <div class="membership-checkout-actions"><button class="membership-secondary" data-ms-cancel>Cancel</button><button class="membership-primary" data-ms-next="2">Continue to Agreement</button></div>
+    </section>
+
+    <section class="membership-checkout-step" data-ms-step="2">
+      <div class="membership-agreement-box"><strong>Membership acknowledgement</strong><p>I confirm that I am authorized to subscribe this account and that I have reviewed the selected plan price, billing cycle, and benefits displayed in this checkout.</p></div>
+      <label class="membership-signature-field"><span>Type your full name to sign</span><input id="membershipSignerName" autocomplete="name"><small id="membershipSignerHint"></small></label>
+      <label class="membership-agree-row"><input type="checkbox" id="membershipAgreementAccepted"><span>I agree to submit this membership subscription under the account shown above.</span></label>
+      <div class="membership-checkout-actions"><button class="membership-secondary" data-ms-back="1">Back</button><button class="membership-primary" data-ms-next="3" id="membershipAgreementContinue">Continue to Payment</button></div>
+    </section>
+
+    <section class="membership-checkout-step" data-ms-step="3">
+      <div class="membership-payment-total"><span>MEMBERSHIP AMOUNT</span><strong id="membershipPaymentAmount">₱0</strong><small id="membershipPaymentCycle"></small></div>
+      <div class="membership-payment-methods" id="membershipPaymentMethods"></div>
+      <div class="membership-payment-qr" id="membershipPaymentQrWrap"><img id="membershipPaymentQr" alt="Demo payment QR"><span>Demo QR only — not a real payment destination.</span></div>
+      <label class="membership-payment-field" id="membershipPaymentReferenceField"><span>Payment reference number</span><input id="membershipPaymentReference" placeholder="Enter payment reference"></label>
+      <label class="membership-payment-field"><span>Payment proof <em>Optional for this static demo</em></span><input id="membershipPaymentProof" type="file" accept="image/*"><small id="membershipPaymentProofName">No file selected · max 1 MB</small></label>
+      <div class="membership-payment-note"><strong>Activation</strong><span>Submitting payment does not activate benefits immediately. NorthZone Admin must verify the payment first.</span></div>
+      <div class="membership-checkout-actions"><button class="membership-secondary" data-ms-back="2">Back</button><button class="membership-primary" id="membershipSubmit">Submit Membership Payment</button></div>
+      <div class="membership-checkout-message" id="membershipCheckoutMessage"></div>
+    </section>
+
+    <section class="membership-checkout-step" data-ms-step="4">
+      <div class="membership-submitted-icon">✓</div><span class="cx-eyebrow">PAYMENT SUBMITTED</span><h2>NorthZone will verify your membership payment.</h2><p>Your plan and benefits become active only after verification.</p>
+      <div class="membership-submitted-ticket" id="membershipSubmittedTicket"></div>
+      <div class="membership-checkout-actions"><button class="membership-primary" id="membershipSubmittedDone">Done</button></div>
+    </section>
+  </div>
+</div>
+
+<footer class="cx-footer compact"><div class="cx-footer-bottom"><span>NorthZone Pickleball Courts</span><span>Powered by <strong>Qourts</strong></span><a href="index.html">Back to NorthZone</a></div></footer>
+<script src="membership-public-snapshot.js?v=14.24.1"></script>
+<script src="integration-contract.js?v=14.24.1"></script>
+<script src="coach-review.js?v=14.23"></script>
+<script src="club-registry.js?v=14.24.3"></script>
+<script src="membership-registry.js?v=14.24.1"></script>
+<script src="membership.js?v=14.24.1"></script>
+<script src="account-header.js?v=14.24.3"></script>
+</body>
+</html>

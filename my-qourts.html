@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07152f">
+<title>My Qourts — NorthZone</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="cx-site cx-inner-page">
+<header class="cx-header">
+  <div class="cx-nav">
+    <a class="cx-brand" href="index.html"><img src="assets/northzone-logo-official.png" alt="NorthZone"></a>
+    <nav aria-label="Main navigation" class="cx-desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html">Membership</a>
+      <a href="booking.html" class="cx-nav-book-link">Book a Court</a>
+    </nav>
+    <div class="cx-nav-actions">
+      <span class="cx-nav-profile-separator" aria-hidden="true"></span>
+      <div class="cx-profile-slot" aria-label="Account"></div>
+      <button aria-label="Open menu" class="cx-menu" id="cxMenu">☰</button>
+    </div>
+</div>
+<div class="cx-mobile-nav" id="cxMobileNav">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="membership.html">Membership</a>
+      <a href="booking.html">Book a Court</a>
+      <a class="cx-mobile-portal" href="portal.html?mode=signin">Sign In</a>
+    </div>
+</header>
+<main class="cx-inner">
+<section class="mq-hero">
+  <div>
+    <span class="cx-eyebrow light">MY QOURTS</span>
+    <h1>Your game.<br>Your identity.<br>Your record.</h1>
+    <p>One player profile designed to connect your verified play across Qourts-powered venues and competitions.</p>
+  </div>
+  <div class="mq-architecture">
+    <div><small>QOURTS ID</small><strong>Who you are.</strong></div>
+    <div><small>QOURTS RATING</small><strong>How you perform.</strong></div>
+    <div><small>QOURTS RECORD</small><strong>What you’ve done.</strong></div>
+    <div><small>PRAISE</small><strong>What players recognize.</strong></div>
+  </div>
+</section>
+
+<section class="mq-access" id="mqAccess">
+  <div class="mq-access-copy">
+    <span class="cx-eyebrow">PLAYER ACCESS</span>
+    <h2>Open My Qourts</h2>
+    <p>This static preview stores a demo profile only in this browser. Production identity and history will be authenticated through Qourts.</p>
+  </div>
+  <div class="mq-access-card">
+    <label>Qourts ID, email, or mobile<input id="mqLookup" placeholder="Enter your player identity"></label>
+    <button id="mqOpen" class="cx-btn cx-btn-dark">Open Profile</button>
+    <button id="mqCreateDemo" class="mq-secondary">Create Demo Qourts Profile</button>
+    <small id="mqMessage"></small>
+  </div>
+</section>
+
+<section class="mq-profile hidden mq-app-shell" id="mqProfile">
+  <div class="mq-profile-head mq-app-identity">
+    <div class="mq-avatar" id="mqAvatar">QP</div>
+    <div class="mq-app-identity-copy">
+      <span class="cx-eyebrow">QOURTS PLAYER</span>
+      <h2 id="mqName">Player</h2>
+      <p id="mqContact"></p>
+    </div>
+    <div class="mq-app-identity-meta">
+      <span>QOURTS ID</span>
+      <strong id="mqIdentityId">QRT-—</strong>
+    </div>
+    <button class="mq-secondary" id="mqReset">Switch Profile</button>
+  </div>
+
+  <nav class="mq-portal-nav portal-secondary-nav mq-app-nav" id="mqPortalNav" aria-label="Player Portal navigation">
+    <button class="active" data-mq-tab="dashboard">Dashboard</button>
+    <button data-mq-tab="feed">Feed</button>
+    <button data-mq-tab="clubs">My Clubs</button>
+    <button data-mq-tab="praise">Praise</button>
+    <button data-mq-tab="record">Record</button>
+    <button data-mq-tab="bookings">Bookings</button>
+    <button data-mq-tab="membership">Membership</button>
+    <button data-mq-tab="profile">Profile</button>
+  </nav>
+
+  <!-- DASHBOARD -->
+  <section class="mq-tab-panel active" data-mq-panel="dashboard">
+    <div class="portal-view-heading">
+      <div><span class="cx-eyebrow">PLAYER DASHBOARD</span><h2>Welcome back, <span id="mqDashboardFirstName">Player</span>.</h2><p>Your play, community, and next actions at a glance.</p></div>
+      <a class="portal-view-primary" href="booking.html">Reserve a Court</a>
+    </div>
+
+    <div class="mq-core-grid">
+      <article class="mq-core id">
+        <span>QOURTS ID</span>
+        <strong id="mqId">QRT-—</strong>
+        <p>Permanent player identity.</p>
+      </article>
+      <article class="mq-core rating">
+        <span>QOURTS RATING</span>
+        <strong id="mqRating">NR</strong>
+        <p id="mqRatingLabel">Not Rated</p>
+      </article>
+      <article class="mq-core record">
+        <span>QOURTS RECORD</span>
+        <strong id="mqRecord">0–0</strong>
+        <p>Verified W–L record.</p>
+      </article>
+    </div>
+
+    <div class="mq-record-grid">
+      <article><span>MATCHES</span><strong id="mqMatches">0</strong></article>
+      <article><span>PE</span><strong id="mqPE">0</strong></article>
+      <article><span>PC</span><strong id="mqPC">0</strong></article>
+      <article><span>PQ</span><strong id="mqPQ">0.000</strong></article>
+    </div>
+
+    <div class="mq-dashboard-grid">
+      <article class="mq-dashboard-card wide">
+        <div class="mq-dashboard-card-head"><div><span>LATEST CLUB UPDATE</span><h3>From your community</h3></div><button data-mq-open-tab="feed">View Feed</button></div>
+        <div id="mqDashboardAnnouncement"></div>
+      </article>
+
+      <article class="mq-dashboard-card">
+        <div class="mq-dashboard-card-head"><div><span>RECENT PRAISE</span><h3>What stood out</h3></div><button data-mq-open-tab="praise">View Praise</button></div>
+        <div id="mqDashboardPraise"></div>
+      </article>
+
+      <article class="mq-dashboard-card">
+        <div class="mq-dashboard-card-head"><div><span>RECENT MATCH</span><h3>Latest verified play</h3></div><button data-mq-open-tab="record">View Record</button></div>
+        <div id="mqDashboardMatch"></div>
+      </article>
+
+      <article class="mq-dashboard-card">
+        <div class="mq-dashboard-card-head"><div><span>MY CLUBS</span><h3>Your communities</h3></div><button data-mq-open-tab="clubs">View Clubs</button></div>
+        <div id="mqDashboardClubs"></div>
+      </article>
+
+      <article class="mq-dashboard-card">
+        <div class="mq-dashboard-card-head"><div><span>PLAY NEXT</span><h3>Get back on court</h3></div></div>
+        <div class="mq-dashboard-actions">
+          <a href="booking.html"><strong>Reserve Court</strong><span>Choose your date, time, court, and add-ons.</span></a>
+          <a href="open-play.html"><strong>Open Play</strong><span>Join Smart Queue and check your status.</span></a>
+          <a href="events.html"><strong>Events</strong><span>Competition, registrations, schedules, and results.</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FEED -->
+  <section class="mq-tab-panel" data-mq-panel="feed">
+    <article class="mq-panel mq-community-feed-panel">
+      <div class="portal-view-heading compact">
+        <div>
+          <span class="cx-eyebrow">COMMUNITY</span>
+          <h2>Feed</h2>
+          <p>Community activity from your affiliated clubs. This view contains feed content only.</p>
+        </div>
+        <span class="mq-status" id="mqCommunityFeedCount">0 UPDATES</span>
+      </div>
+
+      <div class="portal-feed-filters" id="mqCommunityFeedFilters">
+        <button class="active" data-mq-feed-filter="all">All</button>
+        <button data-mq-feed-filter="announcements">Announcements</button>
+        <button data-mq-feed-filter="praise">Praise</button>
+      </div>
+
+      <div id="mqCommunityFeedEmpty" class="mq-empty hidden">
+        <strong>Your community feed is quiet.</strong>
+        <p>Published updates from affiliated clubs will appear here.</p>
+      </div>
+      <div id="mqCommunityFeed" class="portal-community-feed"></div>
+    </article>
+  </section>
+
+  <!-- MY CLUBS -->
+  <section class="mq-tab-panel" data-mq-panel="clubs">
+    <article class="mq-panel mq-club-leaderboards">
+      <div class="portal-view-heading compact">
+        <div>
+          <span class="cx-eyebrow">MY CLUBS</span>
+          <h2>Affiliated Clubs</h2>
+          <p>Your club memberships, community identity, and club competitive leaderboards.</p>
+        </div>
+        <span class="mq-status" id="mqClubAffiliationCount">0 CLUBS</span>
+      </div>
+
+      <div id="mqClubCards" class="mq-club-cards"></div>
+
+      <div class="mq-club-view-divider">
+        <div><span>CLUB COMPETITION</span><h3>Leaderboard</h3></div>
+      </div>
+
+      <div id="mqClubLeaderboardEmpty" class="mq-empty hidden">
+        <strong>No affiliated clubs found.</strong>
+        <p>Your club information will appear when this Qourts identity is registered as a member.</p>
+      </div>
+
+      <div id="mqClubLeaderboardWorkspace" class="hidden">
+        <div class="mq-club-lb-clubs" id="mqClubLeaderboardClubs"></div>
+        <div class="mq-club-lb-toolbar">
+          <div class="mq-club-lb-periods" id="mqClubLeaderboardPeriods">
+            <button class="active" data-period="month">This Month</button>
+            <button data-period="year">This Year</button>
+            <button data-period="all">All Time</button>
+          </div>
+          <label>Rank by
+            <select id="mqClubLeaderboardMetric">
+              <option value="wins">Wins</option>
+              <option value="winPct">Win %</option>
+              <option value="matches">Matches</option>
+              <option value="pe">Points Earned</option>
+              <option value="pq">Point Quotient</option>
+            </select>
+          </label>
+        </div>
+        <div class="mq-club-lb-meta"><strong id="mqClubLeaderboardTitle">Club</strong><span id="mqClubLeaderboardSummary"></span></div>
+        <div id="mqClubLeaderboardTable" class="mq-club-lb-table"></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- PRAISE -->
+  <section class="mq-tab-panel" data-mq-panel="praise">
+    <div class="portal-view-heading">
+      <div><span class="cx-eyebrow">QOURTS PRAISE</span><h2>Recognition built around pickleball.</h2><p>See what players recognize you for, Praise players from verified play, and explore club Praise Boards.</p></div>
+    </div>
+
+    <article class="mq-panel mq-praise-profile">
+      <div class="mq-panel-head mq-praise-head">
+        <div><span class="cx-eyebrow">YOUR PRAISE</span><h3>What players recognize you for.</h3><p>Praise is community reputation—not a competitive rating.</p></div>
+        <div class="mq-praise-total"><strong id="mqPraiseTotal">0</strong><span>Praise</span></div>
+      </div>
+      <div class="mq-praise-summary">
+        <div><span>UNIQUE PLAYERS</span><strong id="mqPraiseUnique">0</strong><small>Different players who praised you</small></div>
+        <div class="mq-known-for"><span>KNOWN FOR</span><div id="mqPraiseKnownFor"></div></div>
+      </div>
+      <div id="mqPraiseRecent" class="mq-praise-recent"></div>
+    </article>
+
+    <article class="mq-panel mq-give-praise">
+      <div class="mq-panel-head mq-give-praise-head">
+        <div><span class="cx-eyebrow">AFTER VERIFIED PLAY</span><h3>Praise a Player</h3><p>Recognize a partner or opponent you actually played with. Choose up to three things that stood out.</p></div>
+        <span class="mq-status">VERIFIED PLAY ONLY</span>
+      </div>
+      <div id="mqPraiseComposerMessage" class="mq-praise-message"></div>
+      <div id="mqPraiseActivityEmpty" class="mq-empty hidden"><strong>No eligible activity yet.</strong><p>Praise unlocks after a verified match or session with another registered player.</p></div>
+      <div id="mqPraiseComposer" class="hidden">
+        <div class="mq-praise-activities" id="mqPraiseActivities"></div>
+        <div class="mq-praise-activity-context" id="mqPraiseActivityContext"></div>
+        <div class="mq-praise-people" id="mqPraisePeople"></div>
+      </div>
+    </article>
+
+    <article class="mq-panel mq-player-praise-board">
+      <div class="mq-panel-head">
+        <div><span class="cx-eyebrow">CLUB PRAISE BOARD</span><h3>What your clubs recognize.</h3><p>Explore transparent community recognition by club, timeframe, or pickleball skill.</p></div>
+        <span class="mq-status" id="mqPlayerPraiseBoardTotal">0 PRAISE</span>
+      </div>
+
+      <div class="mq-player-praise-board-toolbar">
+        <div id="mqPlayerPraiseBoardClubs" class="mq-club-lb-clubs"></div>
+        <div class="mq-player-praise-board-controls">
+          <div class="mq-club-lb-periods" id="mqPlayerPraiseBoardPeriods">
+            <button class="active" data-praise-board-period="month">This Month</button>
+            <button data-praise-board-period="year">This Year</button>
+            <button data-praise-board-period="all">All Time</button>
+          </div>
+          <label>Recognition
+            <select id="mqPlayerPraiseBoardCategory"><option value="all">All Praise</option></select>
+          </label>
+        </div>
+      </div>
+
+      <div class="mq-club-lb-meta"><strong id="mqPlayerPraiseBoardTitle">Club</strong><span id="mqPlayerPraiseBoardSummary"></span></div>
+      <div id="mqPlayerPraiseBoardTable" class="mq-player-praise-board-table"></div>
+    </article>
+  </section>
+
+  <!-- RECORD -->
+  <section class="mq-tab-panel" data-mq-panel="record">
+    <div class="portal-view-heading">
+      <div><span class="cx-eyebrow">QOURTS RECORD</span><h2>Your verified playing history.</h2><p>Objective match history stays separate from community Praise and future Qourts Rating.</p></div>
+    </div>
+
+    <div class="mq-record-view-grid">
+      <article><span>RECORD</span><strong id="mqRecordViewWL">0–0</strong></article>
+      <article><span>MATCHES</span><strong id="mqRecordViewMatches">0</strong></article>
+      <article><span>PE</span><strong id="mqRecordViewPE">0</strong></article>
+      <article><span>PC</span><strong id="mqRecordViewPC">0</strong></article>
+      <article><span>PQ</span><strong id="mqRecordViewPQ">0.000</strong></article>
+    </div>
+
+    <article class="mq-panel mq-history">
+      <div class="mq-panel-head"><div><span class="cx-eyebrow">MATCH HISTORY</span><h3>Verified matches</h3></div><span>Evidence behind your record</span></div>
+      <div id="mqVerifiedHistory"></div>
+    </article>
+
+    <article class="mq-panel mq-record-rating-note">
+      <div class="mq-panel-head"><div><span class="cx-eyebrow">QOURTS RATING</span><h3>Rating status</h3></div><span class="mq-status">DEVELOPMENT</span></div>
+      <p>Qourts Rating is intentionally not fabricated in this prototype. The production rating must be based on verified results, opponent strength, sufficient match volume, recency, and anti-manipulation safeguards.</p>
+      <div class="mq-rating-note"><strong>NR</strong><span>Your rating will appear once the production rating engine and verified match requirements are defined.</span></div>
+    </article>
+  </section>
+
+  <!-- BOOKINGS -->
+  <section class="mq-tab-panel" data-mq-panel="bookings">
+    <div class="portal-view-heading">
+      <div><span class="cx-eyebrow">BOOKINGS</span><h2>Your court time.</h2><p>Reserve courts, training, coaching, and equipment from one booking flow.</p></div>
+      <a class="portal-view-primary" href="booking.html">New Booking</a>
+    </div>
+
+    <div class="mq-bookings-layout">
+      <article class="mq-panel">
+        <div class="mq-panel-head"><div><span class="cx-eyebrow">PERSONAL BOOKINGS</span><h3>Booking history</h3></div></div>
+        <div class="mq-empty">
+          <strong>No synchronized personal booking history in this static preview.</strong>
+          <p>Production bookings will appear here once player identity and booking records are connected to the shared backend.</p>
+        </div>
+      </article>
+      <article class="mq-panel">
+        <div class="mq-panel-head"><div><span class="cx-eyebrow">BOOK NORTHZONE</span><h3>Start a reservation</h3></div></div>
+        <div class="mq-dashboard-actions vertical">
+          <a href="booking.html"><strong>Reserve a Court</strong><span>Choose date, time, and court.</span></a>
+          <a href="booking.html"><strong>Training</strong><span>Self-guided, ball machine, or coaching options.</span></a>
+          <a href="booking.html"><strong>Equipment</strong><span>Add paddles or available equipment to your booking.</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP -->
+  <section class="mq-tab-panel" data-mq-panel="membership">
+    <div class="portal-view-heading">
+      <div><span class="cx-eyebrow">MEMBERSHIP & CREDITS</span><h2>Your NorthZone membership.</h2><p>Monitor your plan, booking benefits, remaining credits, wallet balance, usage, and membership payments.</p></div>
+      <a class="portal-view-primary" href="membership.html">Membership Plans</a>
+    </div>
+    <div id="mqMembershipWorkspace" class="portal-membership-workspace"></div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="mq-tab-panel" data-mq-panel="profile">
+    <div class="portal-view-heading">
+      <div><span class="cx-eyebrow">PROFILE</span><h2>Your Qourts identity.</h2><p>Identity, affiliations, and privacy information for this player profile.</p></div>
+    </div>
+
+    <div class="mq-profile-view-grid">
+      <article class="mq-panel mq-profile-identity-card">
+        <div class="mq-profile-view-avatar" id="mqProfileAvatar">QP</div>
+        <div><span>PLAYER</span><h3 id="mqProfileName">Player</h3><p id="mqProfileContact"></p></div>
+      </article>
+
+      <article class="mq-panel">
+        <div class="mq-profile-detail-list">
+          <div><span>QOURTS ID</span><strong id="mqProfileId">QRT-—</strong></div>
+          <div><span>QOURTS RATING</span><strong id="mqProfileRating">NR · Not Rated</strong></div>
+          <div><span>AFFILIATED CLUBS</span><strong id="mqProfileClubCount">0</strong></div>
+        </div>
+      </article>
+    </div>
+
+    <article class="mq-panel">
+      <div class="mq-panel-head"><div><span class="cx-eyebrow">CLUB AFFILIATIONS</span><h3>Communities connected to you</h3></div></div>
+      <div id="mqProfileClubs" class="mq-profile-clubs"></div>
+    </article>
+
+    <article class="mq-panel mq-profile-privacy">
+      <div class="mq-panel-head"><div><span class="cx-eyebrow">PRIVACY</span><h3>Player information</h3></div></div>
+      <p>Public community views should show only player-safe profile information. Personal email and mobile details must remain private unless the player explicitly chooses otherwise in the production account system.</p>
+    </article>
+  </section>
+</section>
+
+<div class="mq-praise-modal hidden" id="mqPraiseModal" role="dialog" aria-modal="true" aria-labelledby="mqPraiseModalTitle">
+  <div class="mq-praise-modal-backdrop" data-close-praise-modal></div>
+  <div class="mq-praise-modal-card">
+    <div class="mq-praise-modal-head">
+      <div>
+        <span class="cx-eyebrow">QOURTS PRAISE</span>
+        <h3 id="mqPraiseModalTitle">Praise Player</h3>
+        <p id="mqPraiseModalContext"></p>
+      </div>
+      <button type="button" class="mq-praise-close" data-close-praise-modal>×</button>
+    </div>
+    <div class="mq-praise-recipient">
+      <div class="mq-praise-recipient-avatar" id="mqPraiseRecipientAvatar">P</div>
+      <div><strong id="mqPraiseRecipientName">Player</strong><span id="mqPraiseRecipientRelation"></span></div>
+    </div>
+    <div class="mq-praise-select-head">
+      <div><strong>What deserves Praise?</strong><span>Choose up to 3</span></div>
+      <b id="mqPraiseSelectionCount">0 / 3</b>
+    </div>
+    <div class="mq-praise-category-grid" id="mqPraiseCategoryGrid"></div>
+    <label class="mq-praise-note">Optional note
+      <textarea id="mqPraiseNote" maxlength="240" rows="3" placeholder="Add a short message..."></textarea>
+    </label>
+    <div class="mq-praise-modal-actions">
+      <button type="button" class="mq-secondary" data-close-praise-modal>Cancel</button>
+      <button type="button" class="cx-btn cx-btn-dark" id="mqSendPraise">Send Praise</button>
+    </div>
+    <small id="mqPraiseModalMessage"></small>
+  </div>
+</div>
+</main>
+
+<script src="membership-public-snapshot.js?v=14.24.1"></script>
+<script src="integration-contract.js?v=14.24.1"></script>
+<script src="coach-review.js?v=14.23"></script>
+<script src="club-registry.js?v=14.24.3"></script>
+<script src="membership-registry.js?v=14.24.1"></script>
+<script src="membership-profile.js?v=14.24.1"></script>
+<script>
+const KEY='qourts_demo_profile_v1';
+const $=q=>document.querySelector(q);
+const uuid=()=>crypto?.randomUUID?.()||'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0,v=c==='x'?r:(r&3|8);return v.toString(16)});
+const makeId=u=>'QRT-'+u.replaceAll('-','').slice(0,8).toUpperCase();
+let mqClubAffiliations=[],mqSelectedClubId='',mqClubPeriod='month',mqClubMetric='wins',mqAnnouncementClubFilter='all';
+let mqPraiseActivities=[],mqPraiseSelectedActivity='',mqPraiseRecipient='',mqPraiseSelectedCategories=[];
+let mqCommunityFeedFilter='all';
+let mqActiveTab='dashboard',mqPraiseBoardClubId='',mqPraiseBoardPeriod='month',mqPraiseBoardCategory='all';
+function getProfile(){try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch{return null}}
+function saveProfile(p){localStorage.setItem(KEY,JSON.stringify(p))}
+function mqEsc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function mqInitials(name){return String(name||'Player').split(/\s+/).filter(Boolean).map(x=>x[0]).slice(0,2).join('').toUpperCase()||'P'}
+function mqFeedClubAvatar(affiliation){
+  return affiliation?.logoDataUrl
+    ? `<img src="${mqEsc(affiliation.logoDataUrl)}" alt="">`
+    : mqInitials(affiliation?.clubName||'Club');
+}
+function renderMqCommunityFeed(p){
+  NorthZoneClubRegistry.seedDemoAnnouncements?.();
+  NorthZoneClubRegistry.seedDemoPraise?.();
+
+  const affiliations=NorthZoneClubRegistry.playerAffiliations(p)||[];
+  const items=[];
+
+  const publishedPosts=window.NorthZonePlatformBridge?.community?.()?.posts||[];
+
+  affiliations.forEach(aff=>{
+    publishedPosts.filter(post=>String(post.clubId)===String(aff.clubId)).forEach(post=>{
+      items.push({
+        type:'posts',
+        sortDate:post.publishedAt||post.createdAt,
+        html:`<article class="portal-feed-item community-post">
+          <div class="portal-feed-source">
+            <div class="portal-feed-source-avatar">${mqInitials(post.authorName||'Player')}</div>
+            <div><strong>${mqEsc(post.authorName||'Player')}</strong><span>${mqEsc(aff.clubName)} · ${mqEsc(mqAnnouncementDate(post.publishedAt||post.createdAt))}</span></div>
+            ${post.pinned?'<b class="portal-feed-badge pinned">PINNED</b>':'<b class="portal-feed-badge">POST</b>'}
+          </div>
+          ${post.imageDataUrl?`<div class="portal-feed-photo"><img src="${mqEsc(post.imageDataUrl)}" alt="${mqEsc(post.imageName||'Community post')}"></div>`:''}
+          <div class="portal-feed-body"><div class="portal-feed-tags"><span>${mqEsc(String(post.postType||'general').replaceAll('_',' '))}</span></div><p>${mqEsc(post.body||'')}</p></div>
+          <div class="portal-feed-footer"><span>${post.commentsEnabled===false?'Comments disabled':'Club community post'}</span><button data-mq-jump="mqClubsSection">View Club</button></div>
+        </article>`
+      });
+    });
+
+    (NorthZoneClubRegistry.announcements(aff.clubId,{status:'published',activeOnly:true})||[]).forEach(a=>{
+      items.push({
+        type:'announcements',
+        sortDate:a.updatedAt||a.publishedAt||a.createdAt,
+        html:`<article class="portal-feed-item announcement">
+          <div class="portal-feed-source">
+            <div class="portal-feed-source-avatar">${mqFeedClubAvatar(aff)}</div>
+            <div><strong>${mqEsc(aff.clubName)}</strong><span>Announcement · ${mqEsc(mqAnnouncementDate(a.updatedAt||a.publishedAt||a.createdAt))}</span></div>
+            ${a.pinned?'<b class="portal-feed-badge pinned">PINNED</b>':''}
+          </div>
+          ${a.imageDataUrl?`<div class="portal-feed-photo"><img src="${mqEsc(a.imageDataUrl)}" alt="${mqEsc(a.imageName||a.title)}"></div>`:''}
+          <div class="portal-feed-body">
+            <div class="portal-feed-tags"><span>${mqEsc(mqAnnouncementCategory(a.category))}</span>${a.priority==='high'?'<span class="high">HIGH PRIORITY</span>':''}</div>
+            <h3>${mqEsc(a.title)}</h3>
+            <p>${mqEsc(a.body)}</p>
+          </div>
+          <div class="portal-feed-footer"><span>Posted by ${mqEsc(a.authorName||'Club Representative')}</span><button data-mq-jump="mqClubsSection">View Club</button></div>
+        </article>`
+      });
+    });
+
+    (NorthZoneClubRegistry.recentClubPraise(aff.clubId,30)||[]).forEach(pr=>{
+      items.push({
+        type:'praise',
+        sortDate:pr.createdAt||pr.activityDate,
+        html:`<article class="portal-feed-item praise">
+          <div class="portal-feed-source">
+            <div class="portal-feed-source-avatar praise">★</div>
+            <div><strong>${mqEsc(pr.giverName)} praised ${mqEsc(pr.recipientName)}</strong><span>${mqEsc(aff.clubName)} · ${mqEsc(mqAnnouncementDate(pr.activityDate||pr.createdAt))}</span></div>
+            <b class="portal-feed-badge praise">PRAISE</b>
+          </div>
+          <div class="portal-feed-body">
+            <div class="portal-feed-praise-chips">${pr.categories.map(c=>mqPraiseCategoryChip(c)).join('')}</div>
+            ${pr.note?`<p class="portal-feed-quote">“${mqEsc(pr.note)}”</p>`:''}
+          </div>
+          <div class="portal-feed-footer"><span>From verified play</span><button data-mq-jump="mqPraiseSection">View Praise</button></div>
+        </article>`
+      });
+    });
+  });
+
+  items.sort((a,b)=>new Date(b.sortDate).getTime()-new Date(a.sortDate).getTime());
+  const visible=mqCommunityFeedFilter==='all'?items:items.filter(x=>x.type===mqCommunityFeedFilter);
+  $('#mqCommunityFeedCount').textContent=`${items.length} UPDATE${items.length===1?'':'S'}`;
+
+  const empty=$('#mqCommunityFeedEmpty');
+  if(!items.length){
+    empty.classList.remove('hidden');
+    $('#mqCommunityFeed').innerHTML='';
+  }else{
+    empty.classList.add('hidden');
+    $('#mqCommunityFeed').innerHTML=visible.length
+      ?visible.map(x=>x.html).join('')
+      :'<div class="mq-empty"><strong>No updates in this filter.</strong><p>Switch to another feed filter.</p></div>';
+  }
+
+  [...document.querySelectorAll('[data-mq-jump]')].forEach(btn=>btn.onclick=()=>{
+    switchMqTab(btn.dataset.mqJump==='mqPraiseSection'?'praise':'clubs');
+  });
+}
+function mqPraiseCategoryChip(c,count){
+  return `<span class="mq-praise-known-chip"><b>${mqEsc(c.icon||'✨')}</b>${mqEsc(c.label)}${count?` <em>${count}</em>`:''}</span>`;
+}
+function renderMqPraiseProfile(p){
+  NorthZoneClubRegistry.seedDemoPraise?.();
+  const profile=NorthZoneClubRegistry.playerPraiseProfile(p,{period:'all'});
+  $('#mqPraiseTotal').textContent=profile.totalPraise;
+  $('#mqPraiseUnique').textContent=profile.uniquePraisers;
+  $('#mqPraiseKnownFor').innerHTML=profile.categories.length
+    ?profile.categories.slice(0,5).map(c=>mqPraiseCategoryChip(c,c.count)).join('')
+    :'<span class="mq-praise-none">No Praise yet</span>';
+
+  $('#mqPraiseRecent').innerHTML=profile.recent.length?profile.recent.slice(0,5).map(row=>`
+    <article class="mq-praise-recent-row">
+      <div class="mq-praise-recent-icon">★</div>
+      <div>
+        <strong>${mqEsc(row.giverName)} praised you</strong>
+        <div>${row.categories.map(c=>mqPraiseCategoryChip(c)).join('')}</div>
+        ${row.note?`<p>“${mqEsc(row.note)}”</p>`:''}
+        <small>${mqEsc(row.clubName)} · ${mqEsc(mqAnnouncementDate(row.activityDate||row.createdAt))}</small>
+      </div>
+    </article>`).join('')
+    :'<div class="mq-empty"><strong>No Praise yet.</strong><p>Recognition from verified play will appear here.</p></div>';
+}
+function praiseActivityLabel(a){
+  return `${a.clubName} · ${mqAnnouncementDate(a.date)}`;
+}
+function renderMqPraiseComposer(p){
+  NorthZoneClubRegistry.seedDemoPraise?.();
+  mqPraiseActivities=NorthZoneClubRegistry.eligiblePraiseActivities(p)||[];
+  const empty=$('#mqPraiseActivityEmpty'),composer=$('#mqPraiseComposer');
+
+  if(!mqPraiseActivities.length){
+    empty.classList.remove('hidden');composer.classList.add('hidden');return;
+  }
+  empty.classList.add('hidden');composer.classList.remove('hidden');
+
+  if(!mqPraiseSelectedActivity||!mqPraiseActivities.some(a=>a.activityId===mqPraiseSelectedActivity)){
+    mqPraiseSelectedActivity=mqPraiseActivities[0].activityId;
+  }
+  const current=mqPraiseActivities.find(a=>a.activityId===mqPraiseSelectedActivity);
+
+  $('#mqPraiseActivities').innerHTML=mqPraiseActivities.slice(0,6).map(a=>`
+    <button class="${a.activityId===mqPraiseSelectedActivity?'active':''}" data-praise-activity="${mqEsc(a.activityId)}">
+      <span>${mqEsc(mqAnnouncementDate(a.date))}</span>
+      <strong>${mqEsc(a.clubName)}</strong>
+      <small>${a.scoreA}–${a.scoreB}</small>
+    </button>`).join('');
+
+  [...document.querySelectorAll('[data-praise-activity]')].forEach(btn=>btn.onclick=()=>{
+    mqPraiseSelectedActivity=btn.dataset.praiseActivity;
+    renderMqPraiseComposer(p);
+  });
+
+  const myTeam=current.playerSide==='A'?current.teamA:current.teamB;
+  const oppTeam=current.playerSide==='A'?current.teamB:current.teamA;
+  $('#mqPraiseActivityContext').innerHTML=`
+    <div><span>VERIFIED MATCH</span><strong>${mqEsc(praiseActivityLabel(current))}</strong></div>
+    <div><span>YOUR SIDE</span><strong>${mqEsc(myTeam.map(x=>x.name).join(' / '))}</strong></div>
+    <div><span>OPPONENTS</span><strong>${mqEsc(oppTeam.map(x=>x.name).join(' / '))}</strong></div>
+    <div><span>SCORE</span><strong>${current.scoreA}–${current.scoreB}</strong></div>`;
+
+  $('#mqPraisePeople').innerHTML=current.participants.map(person=>`
+    <article class="mq-praise-person">
+      <div class="mq-praise-person-avatar">${person.photoDataUrl?`<img src="${mqEsc(person.photoDataUrl)}" alt="">`:mqInitials(person.name)}</div>
+      <div class="mq-praise-person-copy">
+        <span>${mqEsc(person.relationship)}</span>
+        <strong>${mqEsc(person.name)}</strong>
+        ${person.praisedCategories.length?`<small>Already praised: ${person.praisedCategories.length}/3</small>`:'<small>No Praise sent yet</small>'}
+      </div>
+      <button data-praise-player="${mqEsc(person.qourtsId)}" ${person.praiseRemaining<=0?'disabled':''}>${person.praiseRemaining<=0?'Praise Complete':'Praise'}</button>
+    </article>`).join('');
+
+  [...document.querySelectorAll('[data-praise-player]')].forEach(btn=>btn.onclick=()=>openMqPraiseModal(p,btn.dataset.praisePlayer));
+}
+function openMqPraiseModal(p,recipientQid){
+  const activity=mqPraiseActivities.find(a=>a.activityId===mqPraiseSelectedActivity);
+  const person=activity?.participants.find(x=>String(x.qourtsId)===String(recipientQid));
+  if(!activity||!person)return;
+
+  mqPraiseRecipient=person.qourtsId;
+  mqPraiseSelectedCategories=[];
+  $('#mqPraiseNote').value='';
+  $('#mqPraiseModalMessage').textContent='';
+  $('#mqPraiseRecipientName').textContent=person.name;
+  $('#mqPraiseRecipientRelation').textContent=person.relationship;
+  $('#mqPraiseRecipientAvatar').textContent=mqInitials(person.name);
+  $('#mqPraiseModalContext').textContent=`${praiseActivityLabel(activity)} · ${activity.scoreA}–${activity.scoreB}`;
+
+  const categories=NorthZoneClubRegistry.praiseCategories?.()||[];
+  $('#mqPraiseCategoryGrid').innerHTML=categories.map(c=>{
+    const already=person.praisedCategories.includes(c.id);
+    return `<button type="button" data-praise-category="${mqEsc(c.id)}" class="${already?'already-given':''}" ${already?'disabled':''}>
+      <b>${mqEsc(c.icon||'✨')}</b><span>${mqEsc(c.label)}</span>${already?'<small>GIVEN</small>':''}
+    </button>`;
+  }).join('');
+  $('#mqPraiseSelectionCount').textContent=`0 / ${person.praiseRemaining}`;
+  [...document.querySelectorAll('[data-praise-category]')].forEach(btn=>btn.onclick=()=>{
+    const id=btn.dataset.praiseCategory;
+    const max=person.praiseRemaining;
+    if(mqPraiseSelectedCategories.includes(id)){
+      mqPraiseSelectedCategories=mqPraiseSelectedCategories.filter(x=>x!==id);
+      btn.classList.remove('selected');
+    }else{
+      if(mqPraiseSelectedCategories.length>=max){
+        $('#mqPraiseModalMessage').textContent=`You can add ${max} more Praise categor${max===1?'y':'ies'} for this player in this match.`;
+        return;
+      }
+      mqPraiseSelectedCategories.push(id);
+      btn.classList.add('selected');
+      $('#mqPraiseModalMessage').textContent='';
+    }
+    $('#mqPraiseSelectionCount').textContent=`${mqPraiseSelectedCategories.length} / ${max}`;
+  });
+
+  $('#mqPraiseModal').classList.remove('hidden');
+  document.body.classList.add('mq-modal-open');
+}
+function closeMqPraiseModal(){
+  $('#mqPraiseModal').classList.add('hidden');
+  document.body.classList.remove('mq-modal-open');
+  mqPraiseRecipient='';
+  mqPraiseSelectedCategories=[];
+}
+function renderMqVerifiedHistory(p){
+  const summary=NorthZoneClubRegistry.playerMatchSummary(p);
+  $('#mqRecord').textContent=`${summary.wins}–${summary.losses}`;
+  $('#mqMatches').textContent=summary.matches;
+  $('#mqPE').textContent=summary.pe;
+  $('#mqPC').textContent=summary.pc;
+  $('#mqPQ').textContent=summary.pq.toFixed(3);
+  $('#mqRecordViewWL').textContent=`${summary.wins}–${summary.losses}`;
+  $('#mqRecordViewMatches').textContent=summary.matches;
+  $('#mqRecordViewPE').textContent=summary.pe;
+  $('#mqRecordViewPC').textContent=summary.pc;
+  $('#mqRecordViewPQ').textContent=summary.pq.toFixed(3);
+
+  $('#mqVerifiedHistory').innerHTML=summary.recent.length?summary.recent.map(m=>{
+    const mine=m.playerSide==='A'?m.teamA:m.teamB;
+    const opp=m.playerSide==='A'?m.teamB:m.teamA;
+    return `<article class="mq-verified-match ${m.won?'win':'loss'}">
+      <span>${m.won?'WIN':'LOSS'}</span>
+      <div><strong>${mqEsc(mine.map(x=>x.name).join(' / '))}</strong><small>vs ${mqEsc(opp.map(x=>x.name).join(' / '))} · ${mqEsc(m.clubName)}</small></div>
+      <b>${m.playerScore}–${m.opponentScore}</b>
+      <time>${mqEsc(mqAnnouncementDate(m.date))}</time>
+    </article>`;
+  }).join(''):'<div class="mq-empty"><strong>No verified matches yet.</strong><p>Verified Qourts-powered play will build your record here.</p></div>';
+}
+
+function mqAnnouncementCategory(value){
+  return ({general:'General',event:'Event',schedule:'Schedule',reminder:'Reminder'})[value]||'General';
+}
+function mqAnnouncementDate(value){
+  if(!value)return '—';
+  try{return new Date(value).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}catch{return value}
+}
+function renderMqClubAnnouncements(p){
+  NorthZoneClubRegistry.seedDemoLeaderboardData?.();
+  NorthZoneClubRegistry.seedDemoAnnouncements?.();
+
+  mqClubAffiliations=NorthZoneClubRegistry.playerAffiliations(p)||[];
+  const empty=$('#mqClubAnnouncementEmpty'),workspace=$('#mqClubAnnouncementWorkspace');
+
+  if(!mqClubAffiliations.length){
+    $('#mqClubAnnouncementCount').textContent='0 UPDATES';
+    empty.classList.remove('hidden');
+    workspace.classList.add('hidden');
+    return;
+  }
+
+  let combined=[];
+  mqClubAffiliations.forEach(affiliation=>{
+    const rows=NorthZoneClubRegistry.announcements(affiliation.clubId,{status:'published',activeOnly:true})||[];
+    rows.forEach(item=>combined.push({...item,affiliation}));
+  });
+
+  combined.sort((a,b)=>
+    Number(b.pinned)-Number(a.pinned) ||
+    Number(b.priority==='high')-Number(a.priority==='high') ||
+    new Date(b.updatedAt||b.publishedAt||b.createdAt).getTime() -
+    new Date(a.updatedAt||a.publishedAt||a.createdAt).getTime()
+  );
+
+  $('#mqClubAnnouncementCount').textContent=`${combined.length} UPDATE${combined.length===1?'':'S'}`;
+
+  if(!combined.length){
+    empty.classList.remove('hidden');
+    workspace.classList.add('hidden');
+    return;
+  }
+
+  empty.classList.add('hidden');
+  workspace.classList.remove('hidden');
+
+  const filters=[
+    {id:'all',name:'All Clubs',logoDataUrl:''},
+    ...mqClubAffiliations.map(a=>({id:String(a.clubId),name:a.clubName,logoDataUrl:a.logoDataUrl||''}))
+  ];
+
+  $('#mqClubAnnouncementFilters').innerHTML=filters.map(f=>`
+    <button class="${mqAnnouncementClubFilter===f.id?'active':''}" data-mq-ann-club="${mqEsc(f.id)}">
+      ${f.id==='all'
+        ? '<span class="all">ALL</span>'
+        : `<span>${f.logoDataUrl?`<img src="${mqEsc(f.logoDataUrl)}" alt="">`:mqInitials(f.name)}</span>`}
+      <strong>${mqEsc(f.name)}</strong>
+    </button>
+  `).join('');
+
+  [...document.querySelectorAll('[data-mq-ann-club]')].forEach(btn=>btn.onclick=()=>{
+    mqAnnouncementClubFilter=btn.dataset.mqAnnClub;
+    renderMqClubAnnouncements(p);
+  });
+
+  const visible=mqAnnouncementClubFilter==='all'
+    ? combined
+    : combined.filter(a=>String(a.affiliation.clubId)===String(mqAnnouncementClubFilter));
+
+  $('#mqClubAnnouncementFeed').innerHTML=visible.length?visible.map(a=>{
+    const club=a.affiliation;
+    return `<article class="mq-club-ann-card ${a.pinned?'is-pinned':''} ${a.priority==='high'?'is-high':''}">
+      <div class="mq-club-ann-card-head">
+        <div class="mq-club-ann-source">
+          <i>${club?.logoDataUrl?`<img src="${mqEsc(club.logoDataUrl)}" alt="">`:mqInitials(club?.clubName||'Club')}</i>
+          <div>
+            <strong>${mqEsc(club?.clubName||'Club')}</strong>
+            <span>${mqEsc(mqAnnouncementDate(a.updatedAt||a.publishedAt||a.createdAt))}</span>
+          </div>
+        </div>
+        <div class="mq-club-ann-badges">
+          ${a.pinned?'<span class="pinned">PINNED</span>':''}
+          ${a.priority==='high'?'<span class="priority">HIGH PRIORITY</span>':''}
+          <span>${mqEsc(mqAnnouncementCategory(a.category))}</span>
+        </div>
+      </div>
+
+      ${a.imageDataUrl?`<div class="mq-club-ann-photo"><img src="${mqEsc(a.imageDataUrl)}" alt="${mqEsc(a.imageName||a.title)}"></div>`:''}
+
+      <div class="mq-club-ann-copy">
+        <h4>${mqEsc(a.title)}</h4>
+        <p>${mqEsc(a.body)}</p>
+      </div>
+
+      <div class="mq-club-ann-footer">
+        <span>Posted by ${mqEsc(a.authorName||'Club Representative')}</span>
+        ${a.expiresAt?`<span>Until ${mqEsc(mqAnnouncementDate(a.expiresAt))}</span>`:''}
+      </div>
+    </article>`;
+  }).join(''):`<div class="mq-empty"><strong>No announcements from this club.</strong><p>Try another affiliated club or switch back to All Clubs.</p></div>`;
+}
+
+function renderMqClubLeaderboard(p){
+  NorthZoneClubRegistry.seedDemoLeaderboardData?.();
+  mqClubAffiliations=NorthZoneClubRegistry.playerAffiliations(p)||[];
+  $('#mqClubAffiliationCount').textContent=`${mqClubAffiliations.length} CLUB${mqClubAffiliations.length===1?'':'S'}`;
+  $('#mqClubCards').innerHTML=mqClubAffiliations.length?mqClubAffiliations.map(a=>`
+    <article class="mq-club-card">
+      <div class="mq-club-card-logo">${a.logoDataUrl?`<img src="${mqEsc(a.logoDataUrl)}" alt="">`:mqInitials(a.clubName)}</div>
+      <div><span>AFFILIATED CLUB</span><h3>${mqEsc(a.clubName)}</h3><p>Registered member · Qourts community</p></div>
+      <button data-club-card-leaderboard="${mqEsc(a.clubId)}">View Leaderboard</button>
+    </article>`).join(''):'';
+
+  [...document.querySelectorAll('[data-club-card-leaderboard]')].forEach(btn=>btn.onclick=()=>{
+    mqSelectedClubId=btn.dataset.clubCardLeaderboard;
+    renderMqClubLeaderboard(p);
+  });
+
+  const empty=$('#mqClubLeaderboardEmpty'),workspace=$('#mqClubLeaderboardWorkspace');
+  if(!mqClubAffiliations.length){
+    empty.classList.remove('hidden');workspace.classList.add('hidden');return;
+  }
+  empty.classList.add('hidden');workspace.classList.remove('hidden');
+
+  if(!mqSelectedClubId||!mqClubAffiliations.some(a=>a.clubId===mqSelectedClubId))mqSelectedClubId=mqClubAffiliations[0].clubId;
+  $('#mqClubLeaderboardClubs').innerHTML=mqClubAffiliations.map(a=>`
+    <button class="${a.clubId===mqSelectedClubId?'active':''}" data-mq-club="${mqEsc(a.clubId)}">
+      <span>${a.logoDataUrl?`<img src="${mqEsc(a.logoDataUrl)}" alt="">`:mqInitials(a.clubName)}</span>
+      <strong>${mqEsc(a.clubName)}</strong>
+    </button>`).join('');
+
+  [...document.querySelectorAll('[data-mq-club]')].forEach(btn=>btn.onclick=()=>{
+    mqSelectedClubId=btn.dataset.mqClub;
+    renderMqClubLeaderboard(p);
+  });
+
+  const affiliation=mqClubAffiliations.find(a=>a.clubId===mqSelectedClubId);
+  const data=NorthZoneClubRegistry.clubLeaderboard(mqSelectedClubId,mqClubPeriod,mqClubMetric);
+  $('#mqClubLeaderboardTitle').textContent=affiliation?.clubName||data.club?.name||'Club';
+  $('#mqClubLeaderboardSummary').textContent=`${data.eligibleMembers} members · ${data.verifiedMatches} verified matches`;
+
+  $('#mqClubLeaderboardTable').innerHTML=`
+    <div class="mq-club-lb-table-head"><span>#</span><span>Player</span><span>W–L</span><span>Win %</span><span>Matches</span><span>PE</span><span>PC</span><span>PQ</span></div>
+    ${data.rows.map(row=>{
+      const me=String(row.qourtsId||'').toLowerCase()===String(p.qourtsId||'').toLowerCase();
+      return `<article class="mq-club-lb-row ${me?'is-me':''}">
+        <span>${row.rank}</span>
+        <div class="mq-club-lb-player"><i>${row.photoDataUrl?`<img src="${mqEsc(row.photoDataUrl)}" alt="">`:mqInitials(row.name)}</i><strong>${mqEsc(row.name)}${me?' <em>YOU</em>':''}</strong></div>
+        <span>${row.wins}–${row.losses}</span>
+        <span>${(row.winPct*100).toFixed(0)}%</span>
+        <span>${row.matches}</span>
+        <span>${row.pe}</span>
+        <span>${row.pc}</span>
+        <span>${row.pq.toFixed(3)}</span>
+      </article>`;
+    }).join('')}
+  `;
+}
+
+function switchMqTab(tab,updateHash=true){
+  const valid=['dashboard','feed','clubs','praise','record','bookings','membership','profile'];
+  if(!valid.includes(tab))tab='dashboard';
+  mqActiveTab=tab;
+  [...document.querySelectorAll('#mqPortalNav [data-mq-tab]')].forEach(btn=>btn.classList.toggle('active',btn.dataset.mqTab===tab));
+  [...document.querySelectorAll('#mqProfile [data-mq-panel]')].forEach(panel=>panel.classList.toggle('active',panel.dataset.mqPanel===tab));
+  if(updateHash)history.replaceState(null,'',`#${tab}`);
+  window.scrollTo({top:Math.max(0,$('#mqProfile').offsetTop-76),behavior:'smooth'});
+}
+function renderMqDashboard(p){
+  const affiliations=NorthZoneClubRegistry.playerAffiliations(p)||[];
+  const firstName=String(p.name||'Player').split(/\s+/)[0]||'Player';
+  $('#mqDashboardFirstName').textContent=firstName;
+
+  let announcements=[];
+  affiliations.forEach(aff=>{
+    (NorthZoneClubRegistry.announcements(aff.clubId,{status:'published',activeOnly:true})||[])
+      .forEach(a=>announcements.push({...a,clubName:aff.clubName,clubLogoDataUrl:aff.logoDataUrl||''}));
+  });
+  announcements.sort((a,b)=>
+    Number(b.pinned)-Number(a.pinned)||
+    new Date(b.updatedAt||b.publishedAt||b.createdAt).getTime()-new Date(a.updatedAt||a.publishedAt||a.createdAt).getTime()
+  );
+  const latest=announcements[0];
+  $('#mqDashboardAnnouncement').innerHTML=latest?`
+    <div class="mq-dash-announcement">
+      <div class="mq-dash-source"><i>${latest.clubLogoDataUrl?`<img src="${mqEsc(latest.clubLogoDataUrl)}" alt="">`:mqInitials(latest.clubName)}</i><div><strong>${mqEsc(latest.clubName)}</strong><span>${mqEsc(mqAnnouncementDate(latest.updatedAt||latest.publishedAt||latest.createdAt))}</span></div></div>
+      <h4>${mqEsc(latest.title)}</h4>
+      <p>${mqEsc(latest.body)}</p>
+    </div>`:
+    '<div class="mq-dashboard-empty">No published club updates right now.</div>';
+
+  const praise=NorthZoneClubRegistry.playerPraiseProfile(p,{period:'all'});
+  const recentPraise=praise.recent?.[0];
+  $('#mqDashboardPraise').innerHTML=recentPraise?`
+    <div class="mq-dash-praise">
+      <strong>${mqEsc(recentPraise.giverName)} praised you</strong>
+      <div>${recentPraise.categories.map(c=>mqPraiseCategoryChip(c)).join('')}</div>
+      ${recentPraise.note?`<p>“${mqEsc(recentPraise.note)}”</p>`:''}
+      <small>${mqEsc(recentPraise.clubName)} · ${mqEsc(mqAnnouncementDate(recentPraise.activityDate||recentPraise.createdAt))}</small>
+    </div>`:
+    '<div class="mq-dashboard-empty">No Praise received yet.</div>';
+
+  const summary=NorthZoneClubRegistry.playerMatchSummary(p);
+  const match=summary.recent?.[0];
+  $('#mqDashboardMatch').innerHTML=match?`
+    <div class="mq-dash-match">
+      <div><span class="${match.won?'win':'loss'}">${match.won?'WIN':'LOSS'}</span><strong>${match.playerScore}–${match.opponentScore}</strong></div>
+      <p>vs ${mqEsc((match.playerSide==='A'?match.teamB:match.teamA).map(x=>x.name).join(' / '))}</p>
+      <small>${mqEsc(match.clubName)} · ${mqEsc(mqAnnouncementDate(match.date))}</small>
+    </div>`:
+    '<div class="mq-dashboard-empty">No verified matches yet.</div>';
+
+  $('#mqDashboardClubs').innerHTML=affiliations.length?`
+    <div class="mq-dash-clubs">
+      ${affiliations.slice(0,3).map(aff=>`<div><i>${aff.logoDataUrl?`<img src="${mqEsc(aff.logoDataUrl)}" alt="">`:mqInitials(aff.clubName)}</i><span><strong>${mqEsc(aff.clubName)}</strong><small>Registered member</small></span></div>`).join('')}
+      ${affiliations.length>3?`<small>+${affiliations.length-3} more club${affiliations.length-3===1?'':'s'}</small>`:''}
+    </div>`:
+    '<div class="mq-dashboard-empty">No affiliated clubs yet.</div>';
+}
+function renderMqProfileDetails(p){
+  const affiliations=NorthZoneClubRegistry.playerAffiliations(p)||[];
+  const initials=mqInitials(p.name);
+  $('#mqProfileAvatar').textContent=initials;
+  $('#mqProfileName').textContent=p.name||'Player';
+  $('#mqProfileContact').textContent=[p.email,p.mobile].filter(Boolean).join(' · ');
+  $('#mqProfileId').textContent=p.qourtsId||'—';
+  $('#mqProfileRating').textContent=`${p.rating||'NR'} · ${p.ratingLabel||'Not Rated'}`;
+  $('#mqProfileClubCount').textContent=affiliations.length;
+  $('#mqProfileClubs').innerHTML=affiliations.length?affiliations.map(aff=>`
+    <article class="mq-profile-club-row">
+      <i>${aff.logoDataUrl?`<img src="${mqEsc(aff.logoDataUrl)}" alt="">`:mqInitials(aff.clubName)}</i>
+      <div><strong>${mqEsc(aff.clubName)}</strong><span>${mqEsc(aff.member?.status||'Active')} member</span></div>
+      <button data-profile-open-clubs>View Club</button>
+    </article>`).join(''):
+    '<div class="mq-empty"><strong>No club affiliations yet.</strong><p>Registered memberships will appear here.</p></div>';
+  [...document.querySelectorAll('[data-profile-open-clubs]')].forEach(btn=>btn.onclick=()=>switchMqTab('clubs'));
+}
+function renderMqPlayerPraiseBoard(p){
+  const affiliations=NorthZoneClubRegistry.playerAffiliations(p)||[];
+  const categories=NorthZoneClubRegistry.praiseCategories?.()||[];
+  const select=$('#mqPlayerPraiseBoardCategory');
+  if(select&&select.options.length<=1){
+    select.insertAdjacentHTML('beforeend',categories.map(c=>`<option value="${mqEsc(c.id)}">${mqEsc(c.label)}</option>`).join(''));
+  }
+  if(!affiliations.length){
+    $('#mqPlayerPraiseBoardClubs').innerHTML='';
+    $('#mqPlayerPraiseBoardTitle').textContent='No affiliated clubs';
+    $('#mqPlayerPraiseBoardSummary').textContent='';
+    $('#mqPlayerPraiseBoardTotal').textContent='0 PRAISE';
+    $('#mqPlayerPraiseBoardTable').innerHTML='<div class="mq-empty"><strong>No club Praise Board yet.</strong><p>Join or affiliate with a club to view its community recognition.</p></div>';
+    return;
+  }
+  if(!mqPraiseBoardClubId||!affiliations.some(a=>String(a.clubId)===String(mqPraiseBoardClubId)))mqPraiseBoardClubId=affiliations[0].clubId;
+
+  $('#mqPlayerPraiseBoardClubs').innerHTML=affiliations.map(aff=>`
+    <button class="${String(aff.clubId)===String(mqPraiseBoardClubId)?'active':''}" data-player-praise-club="${mqEsc(aff.clubId)}">
+      <span>${aff.logoDataUrl?`<img src="${mqEsc(aff.logoDataUrl)}" alt="">`:mqInitials(aff.clubName)}</span>
+      <strong>${mqEsc(aff.clubName)}</strong>
+    </button>`).join('');
+  [...document.querySelectorAll('[data-player-praise-club]')].forEach(btn=>btn.onclick=()=>{
+    mqPraiseBoardClubId=btn.dataset.playerPraiseClub;
+    renderMqPlayerPraiseBoard(p);
+  });
+
+  const data=NorthZoneClubRegistry.clubPraiseBoard(mqPraiseBoardClubId,mqPraiseBoardPeriod,mqPraiseBoardCategory);
+  const affiliation=affiliations.find(a=>String(a.clubId)===String(mqPraiseBoardClubId));
+  $('#mqPlayerPraiseBoardTitle').textContent=affiliation?.clubName||data.club?.name||'Club';
+  $('#mqPlayerPraiseBoardSummary').textContent=`${data.rows.length} recognized player${data.rows.length===1?'':'s'} · ${data.uniquePraisers} unique praiser${data.uniquePraisers===1?'':'s'}`;
+  $('#mqPlayerPraiseBoardTotal').textContent=`${data.totalPraise} PRAISE`;
+
+  $('#mqPlayerPraiseBoardTable').innerHTML=data.rows.length?`
+    <div class="mq-player-praise-board-head"><span>#</span><span>Player</span><span>Praise</span><span>Unique</span><span>Known For</span></div>
+    ${data.rows.map(row=>`
+      <article class="mq-player-praise-board-row">
+        <span>${row.rank}</span>
+        <div class="mq-player-praise-player"><i>${row.photoDataUrl?`<img src="${mqEsc(row.photoDataUrl)}" alt="">`:mqInitials(row.name)}</i><strong>${mqEsc(row.name)}</strong></div>
+        <strong>${row.praise}</strong>
+        <span>${row.uniquePraisers}</span>
+        <div>${row.knownFor.map(c=>mqPraiseCategoryChip(c,c.count)).join('')||'—'}</div>
+      </article>`).join('')}
+  `:'<div class="mq-empty"><strong>No Praise in this view yet.</strong><p>Try another timeframe or recognition category.</p></div>';
+}
+
+function showProfile(p){
+  $('#mqAccess').classList.add('hidden');$('#mqProfile').classList.remove('hidden');
+  $('#mqAvatar').textContent=mqInitials(p.name);
+  $('#mqName').textContent=p.name;$('#mqContact').textContent=[p.email,p.mobile].filter(Boolean).join(' · ');
+  $('#mqIdentityId').textContent=p.qourtsId||'—';
+  $('#mqId').textContent=p.qourtsId;$('#mqRating').textContent=p.rating||'NR';$('#mqRatingLabel').textContent=p.ratingLabel||'Not Rated';
+  renderMqVerifiedHistory(p);
+  renderMqCommunityFeed(p);
+  renderMqPraiseProfile(p);
+  renderMqPraiseComposer(p);
+  renderMqClubLeaderboard(p);
+  renderMqDashboard(p);
+  renderMqProfileDetails(p);
+  renderMqPlayerPraiseBoard(p);
+  NorthZoneMembershipProfile?.renderPlayer?.($('#mqMembershipWorkspace'),p);
+  const requested=(location.hash||'').replace('#','');
+  switchMqTab(['dashboard','feed','clubs','praise','record','bookings','membership','profile'].includes(requested)?requested:'dashboard',false);
+}
+$('#mqOpen').onclick=()=>{
+ const p=getProfile(),v=$('#mqLookup').value.trim().toLowerCase();
+ if(p&&[p.qourtsId,p.email,p.mobile].filter(Boolean).some(x=>String(x).toLowerCase()===v)){showProfile(p);return}
+ $('#mqMessage').textContent='No local demo profile found for that identity.';
+};
+$('#mqCreateDemo').onclick=()=>{
+ const p={uuid:'demo-player-profile',qourtsId:'QRT-DEMO-PLAYER',name:'Demo Player',email:'player@example.com',mobile:'0917 000 0000',rating:'NR',ratingLabel:'Not Rated',wins:0,losses:0,pe:0,pc:0};
+ NorthZoneClubRegistry.seedDemoLeaderboardData?.();
+ NorthZoneClubRegistry.seedDemoPraise?.();
+ saveProfile(p);showProfile(p);
+};
+[...document.querySelectorAll('#mqPortalNav [data-mq-tab]')].forEach(btn=>btn.onclick=()=>switchMqTab(btn.dataset.mqTab));
+[...document.querySelectorAll('[data-mq-open-tab]')].forEach(btn=>btn.onclick=()=>switchMqTab(btn.dataset.mqOpenTab));
+[...document.querySelectorAll('#mqCommunityFeedFilters [data-mq-feed-filter]')].forEach(btn=>btn.onclick=()=>{
+  mqCommunityFeedFilter=btn.dataset.mqFeedFilter;
+  [...document.querySelectorAll('#mqCommunityFeedFilters [data-mq-feed-filter]')].forEach(x=>x.classList.toggle('active',x===btn));
+  const p=getProfile();if(p)renderMqCommunityFeed(p);
+});
+
+[...document.querySelectorAll('[data-close-praise-modal]')].forEach(btn=>btn.onclick=closeMqPraiseModal);
+$('#mqSendPraise').onclick=()=>{
+  const p=getProfile();
+  const activity=mqPraiseActivities.find(a=>a.activityId===mqPraiseSelectedActivity);
+  if(!p||!activity||!mqPraiseRecipient)return;
+  const res=NorthZoneClubRegistry.submitPraise({
+    giver:p,
+    clubId:activity.clubId,
+    activityId:activity.activityId,
+    recipientQourtsId:mqPraiseRecipient,
+    categories:mqPraiseSelectedCategories,
+    note:$('#mqPraiseNote').value
+  });
+  if(!res.ok){
+    $('#mqPraiseModalMessage').textContent=res.message;return;
+  }
+  closeMqPraiseModal();
+  $('#mqPraiseComposerMessage').textContent=`Praise sent · ${res.addedCategories.length} recognition${res.addedCategories.length===1?'':'s'}.`;
+  renderMqPraiseProfile(p);
+  renderMqPraiseComposer(p);
+};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#mqPraiseModal').classList.contains('hidden'))closeMqPraiseModal()});
+
+[...document.querySelectorAll('#mqPlayerPraiseBoardPeriods [data-praise-board-period]')].forEach(btn=>btn.onclick=()=>{
+  mqPraiseBoardPeriod=btn.dataset.praiseBoardPeriod;
+  [...document.querySelectorAll('#mqPlayerPraiseBoardPeriods [data-praise-board-period]')].forEach(x=>x.classList.toggle('active',x===btn));
+  const p=getProfile();if(p)renderMqPlayerPraiseBoard(p);
+});
+$('#mqPlayerPraiseBoardCategory').onchange=e=>{
+  mqPraiseBoardCategory=e.target.value;
+  const p=getProfile();if(p)renderMqPlayerPraiseBoard(p);
+};
+
+[...document.querySelectorAll('#mqClubLeaderboardPeriods [data-period]')].forEach(btn=>btn.onclick=()=>{
+  mqClubPeriod=btn.dataset.period;
+  [...document.querySelectorAll('#mqClubLeaderboardPeriods [data-period]')].forEach(x=>x.classList.toggle('active',x===btn));
+  const p=getProfile();if(p)renderMqClubLeaderboard(p);
+});
+$('#mqClubLeaderboardMetric').onchange=e=>{mqClubMetric=e.target.value;const p=getProfile();if(p)renderMqClubLeaderboard(p);};
+$('#mqReset').onclick=()=>{$('#mqProfile').classList.add('hidden');$('#mqAccess').classList.remove('hidden');$('#mqLookup').value='';history.replaceState(null,'',location.pathname);mqActiveTab='dashboard';};
+const existing=getProfile();if(existing)showProfile(existing);
+</script>
+<footer class="cx-footer compact">
+  <div class="cx-footer-bottom"><span>NorthZone Pickleball Courts</span><span>Powered by <strong>Qourts</strong></span><a href="index.html">Back to NorthZone</a></div>
+</footer>
+<script>
+const menu=document.getElementById('cxMenu'),mobile=document.getElementById('cxMobileNav');
+menu?.addEventListener('click',()=>mobile.classList.toggle('show'));
+</script>
+<script src="account-header.js?v=14.24.3"></script>
+</body></html>
