@@ -1,0 +1,97 @@
+{
+  "viewCount": 13,
+  "failed": [],
+  "results": [
+    {
+      "page": "index.html",
+      "viewport": "desktop",
+      "ok": true,
+      "chars": 3934,
+      "errors": []
+    },
+    {
+      "page": "booking.html",
+      "viewport": "desktop",
+      "ok": true,
+      "chars": 1720,
+      "errors": []
+    },
+    {
+      "page": "portal.html",
+      "viewport": "desktop",
+      "ok": true,
+      "chars": 1109,
+      "errors": []
+    },
+    {
+      "page": "my-qourts.html",
+      "viewport": "desktop",
+      "ok": true,
+      "chars": 638,
+      "errors": []
+    },
+    {
+      "page": "club-register.html",
+      "viewport": "desktop",
+      "ok": true,
+      "chars": 813,
+      "errors": []
+    },
+    {
+      "page": "club-portal.html",
+      "viewport": "desktop",
+      "ok": true,
+      "chars": 596,
+      "errors": []
+    },
+    {
+      "page": "events.html",
+      "viewport": "desktop",
+      "ok": true,
+      "chars": 916,
+      "errors": []
+    },
+    {
+      "page": "membership.html",
+      "viewport": "desktop",
+      "ok": true,
+      "chars": 1001,
+      "errors": []
+    },
+    {
+      "page": "open-play.html",
+      "viewport": "desktop",
+      "ok": true,
+      "chars": 1641,
+      "errors": []
+    },
+    {
+      "page": "index.html",
+      "viewport": "mobile",
+      "ok": true,
+      "chars": 3877,
+      "errors": []
+    },
+    {
+      "page": "booking.html",
+      "viewport": "mobile",
+      "ok": true,
+      "chars": 1241,
+      "errors": []
+    },
+    {
+      "page": "my-qourts.html",
+      "viewport": "mobile",
+      "ok": true,
+      "chars": 581,
+      "errors": []
+    },
+    {
+      "page": "club-portal.html",
+      "viewport": "mobile",
+      "ok": true,
+      "chars": 541,
+      "errors": []
+    }
+  ]
+}

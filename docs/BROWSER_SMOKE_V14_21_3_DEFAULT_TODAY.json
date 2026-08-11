@@ -1,0 +1,55 @@
+{
+  "fixedLocalTime": "2026-08-10 15:30 Asia/Manila",
+  "checks": [
+    {
+      "name": "Today selected by default",
+      "ok": true
+    },
+    {
+      "name": "Selected-date chip shows Today",
+      "ok": true
+    },
+    {
+      "name": "Calendar highlights Today",
+      "ok": true
+    },
+    {
+      "name": "7:00 AM past",
+      "ok": true
+    },
+    {
+      "name": "12:00 PM past",
+      "ok": true
+    },
+    {
+      "name": "3:00 PM past",
+      "ok": true
+    },
+    {
+      "name": "4:00 PM future slot enabled",
+      "ok": true
+    },
+    {
+      "name": "Court 3 selectable at 4 PM",
+      "ok": true
+    },
+    {
+      "name": "Continue enabled after future time + court",
+      "ok": true
+    },
+    {
+      "name": "7:00 PM remains selectable with one court free",
+      "ok": true
+    },
+    {
+      "name": "7 PM uses actual court blocks",
+      "ok": true
+    },
+    {
+      "name": "Player date override works",
+      "ok": true
+    }
+  ],
+  "failed": [],
+  "browserErrors": []
+}

@@ -1,0 +1,40 @@
+{
+  "release": "v14.24.1",
+  "targetedMembershipChecks": {
+    "count": 9,
+    "passed": 9,
+    "failed": 0,
+    "wideDesktop": {
+      "viewportWidth": 1728,
+      "mainWidth": 1728,
+      "heroWidth": 1728,
+      "planCount": 4,
+      "headingColor": "rgb(255, 255, 255)",
+      "membershipSource": "bundled-admin-snapshot",
+      "paymentMethods": {"gcash": true, "maya": true, "payAtVenue": true}
+    },
+    "mobile": {
+      "viewportWidth": 390,
+      "bodyScrollWidth": 390,
+      "heroWidth": 390,
+      "planCount": 4,
+      "planGridColumns": 1
+    },
+    "subscriptionCheckout": {
+      "playerSubscribeButton": true,
+      "checkoutOpened": true,
+      "signatureAccepted": true,
+      "membershipSubscriptionQueued": true
+    }
+  },
+  "liveAdminPriority": {
+    "liveContractOverridesSnapshot": true,
+    "livePaymentMethodsOverrideSnapshot": true
+  },
+  "fullClientRegression": {
+    "views": 14,
+    "passed": 14,
+    "failed": 0,
+    "browserErrors": 0
+  }
+}

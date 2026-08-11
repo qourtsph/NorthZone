@@ -1,0 +1,46 @@
+{
+  "checks": [
+    {
+      "name": "Completed owned session becomes Client review eligible",
+      "ok": true
+    },
+    {
+      "name": "Automatic review modal opens",
+      "ok": true
+    },
+    {
+      "name": "Prompt identifies Coach Raf and verified session",
+      "ok": true
+    },
+    {
+      "name": "1\u20135 star control enables submission",
+      "ok": true
+    },
+    {
+      "name": "Review enters validated integration queue",
+      "ok": true
+    },
+    {
+      "name": "Admin auto-import validates and publishes review",
+      "ok": true
+    },
+    {
+      "name": "Coach public rating updates to 5.0",
+      "ok": true
+    },
+    {
+      "name": "Written review appears in public Coach data",
+      "ok": true
+    },
+    {
+      "name": "Same session cannot prompt twice",
+      "ok": true
+    },
+    {
+      "name": "Duplicate review is blocked",
+      "ok": true
+    }
+  ],
+  "failed": [],
+  "browserErrors": []
+}

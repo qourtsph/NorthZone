@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "name": "Coach selection card displays verified rating",
+      "ok": true
+    },
+    {
+      "name": "Coach Profile displays rating summary",
+      "ok": true
+    },
+    {
+      "name": "Coach Profile posts written review",
+      "ok": true
+    },
+    {
+      "name": "Coach Profile labels review as verified session",
+      "ok": true
+    },
+    {
+      "name": "Five-star review renders five filled stars",
+      "ok": true
+    },
+    {
+      "name": "Review list remains readable on mobile",
+      "ok": true
+    }
+  ],
+  "failed": [],
+  "browserErrors": []
+}

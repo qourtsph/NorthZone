@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "name": "Client registry receives Admin coach data",
+      "ok": true
+    },
+    {
+      "name": "Player booking goals include Lobs",
+      "ok": true
+    },
+    {
+      "name": "Configured date/time makes Coach Raf bookable",
+      "ok": true
+    },
+    {
+      "name": "Specialty matching uses structured Admin specialties",
+      "ok": true
+    },
+    {
+      "name": "Certification is visible while choosing coach",
+      "ok": true
+    },
+    {
+      "name": "Coach profile displays certification details",
+      "ok": true
+    },
+    {
+      "name": "Certificate PDF is available to player",
+      "ok": true
+    },
+    {
+      "name": "Outside configured date coach cannot be selected",
+      "ok": true
+    }
+  ],
+  "failed": [],
+  "browserErrors": []
+}

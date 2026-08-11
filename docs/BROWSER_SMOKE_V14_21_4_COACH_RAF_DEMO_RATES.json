@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "name": "Coach Raf has 24 exact demo rate rows",
+      "ok": true
+    },
+    {
+      "name": "Coach Raf has 7-day demo availability",
+      "ok": true
+    },
+    {
+      "name": "Coach Raf supports 4 demo players",
+      "ok": true
+    },
+    {
+      "name": "4-player / 180-minute exact rate resolves to \u20b15,200",
+      "ok": true
+    },
+    {
+      "name": "Demo rate is recognized as configured",
+      "ok": true
+    },
+    {
+      "name": "Coach Raf is available for the demo slot",
+      "ok": true
+    },
+    {
+      "name": "Coach Raf Select Coach control is enabled",
+      "ok": true
+    },
+    {
+      "name": "Coaching setup can continue after selecting Coach Raf",
+      "ok": true
+    },
+    {
+      "name": "Coaching subtotal uses exact \u20b15,200 session rate",
+      "ok": true
+    }
+  ],
+  "failed": [],
+  "browserErrors": []
+}

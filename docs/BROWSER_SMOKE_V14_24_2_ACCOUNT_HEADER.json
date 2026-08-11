@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "name": "Signed-out header says Sign in",
+      "ok": true
+    },
+    {
+      "name": "Signed-out menu has Player Sign In",
+      "ok": true
+    },
+    {
+      "name": "Signed-out menu has Club Sign In",
+      "ok": true
+    },
+    {
+      "name": "Signed-out menu has Register Player",
+      "ok": true
+    },
+    {
+      "name": "Signed-out menu has Register a Club",
+      "ok": true
+    },
+    {
+      "name": "Player label",
+      "ok": true
+    },
+    {
+      "name": "Club organizer priority",
+      "ok": true
+    },
+    {
+      "name": "Club portal destination",
+      "ok": true
+    },
+    {
+      "name": "Club sign-out reveals player",
+      "ok": true
+    },
+    {
+      "name": "Registration modal opens",
+      "ok": true
+    },
+    {
+      "name": "Registration updates header",
+      "ok": true
+    }
+  ],
+  "failed": [],
+  "browserErrors": []
+}

@@ -1,0 +1,131 @@
+{
+  "checks": [
+    {
+      "name": "Desktop nav exact order",
+      "ok": true
+    },
+    {
+      "name": "Legacy Open Play/Explore removed",
+      "ok": true
+    },
+    {
+      "name": "Separator before profile",
+      "ok": true
+    },
+    {
+      "name": "Signed out shows Sign In",
+      "ok": true
+    },
+    {
+      "name": "Player Sign In option",
+      "ok": true
+    },
+    {
+      "name": "Club Sign In option",
+      "ok": true
+    },
+    {
+      "name": "Register Player option",
+      "ok": true
+    },
+    {
+      "name": "Register Club option",
+      "ok": true
+    },
+    {
+      "name": "Player badge replaces Sign In",
+      "ok": true
+    },
+    {
+      "name": "Player name below badge",
+      "ok": true
+    },
+    {
+      "name": "Initials fallback",
+      "ok": true
+    },
+    {
+      "name": "Player portal link",
+      "ok": true
+    },
+    {
+      "name": "Player greeting markup",
+      "ok": true
+    },
+    {
+      "name": "Club organizer priority",
+      "ok": true
+    },
+    {
+      "name": "Club portal link",
+      "ok": true
+    },
+    {
+      "name": "Club name in menu",
+      "ok": true
+    },
+    {
+      "name": "Mobile no horizontal overflow",
+      "ok": true,
+      "value": 0
+    },
+    {
+      "name": "Mobile profile badge visible",
+      "ok": true
+    },
+    {
+      "name": "Mobile drawer opens",
+      "ok": true
+    },
+    {
+      "name": "Mobile new IA",
+      "ok": true
+    },
+    {
+      "name": "Target browser errors 0",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "index.html smoke",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "events.html smoke",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "membership.html smoke",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "open-play.html smoke",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "portal.html smoke",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "my-qourts.html smoke",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "club-portal.html smoke",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "booking.html smoke",
+      "ok": true,
+      "errors": []
+    }
+  ],
+  "failed": []
+}

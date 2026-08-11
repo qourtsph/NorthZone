@@ -1,0 +1,251 @@
+{
+  "player_subscription": {
+    "checks": [
+      {
+        "name": "Player account recognized",
+        "ok": true
+      },
+      {
+        "name": "Player sees eligible plans",
+        "ok": true
+      },
+      {
+        "name": "Individual plan is available",
+        "ok": true
+      },
+      {
+        "name": "Checkout opens",
+        "ok": true
+      },
+      {
+        "name": "Checkout uses Admin plan price",
+        "ok": true
+      },
+      {
+        "name": "Signed payment submission completed",
+        "ok": true
+      },
+      {
+        "name": "Membership enters Admin inbound queue",
+        "ok": true
+      },
+      {
+        "name": "Admin auto-import creates pending request",
+        "ok": true
+      },
+      {
+        "name": "Benefits inactive before payment verification",
+        "ok": true
+      },
+      {
+        "name": "Admin payment verification activates membership",
+        "ok": true
+      },
+      {
+        "name": "Client immediately detects active plan",
+        "ok": true
+      },
+      {
+        "name": "Client receives membership credits/rates",
+        "ok": true
+      }
+    ],
+    "errors": []
+  },
+  "club_subscription": {
+    "checks": [
+      {
+        "name": "Approved Club account recognized",
+        "ok": true
+      },
+      {
+        "name": "Club plan available",
+        "ok": true
+      },
+      {
+        "name": "Club checkout uses Admin plan",
+        "ok": true
+      },
+      {
+        "name": "Club subscription submitted for payment verification",
+        "ok": true
+      },
+      {
+        "name": "Admin imports Club subscription",
+        "ok": true
+      },
+      {
+        "name": "Club benefits wait for payment verification",
+        "ok": true
+      },
+      {
+        "name": "Admin activates Club membership after payment",
+        "ok": true
+      },
+      {
+        "name": "Client detects active Club benefits",
+        "ok": true
+      }
+    ],
+    "errors": []
+  },
+  "player_booking_one_benefit": {
+    "checks": [
+      {
+        "name": "Checkout detects active membership",
+        "ok": true
+      },
+      {
+        "name": "Savings UI is single-choice radio group",
+        "ok": true
+      },
+      {
+        "name": "Membership discount applies alone",
+        "ok": true
+      },
+      {
+        "name": "Selecting another benefit replaces prior choice",
+        "ok": true
+      },
+      {
+        "name": "Checkout explains one-benefit limit",
+        "ok": true
+      },
+      {
+        "name": "Client submits selected benefit code only",
+        "ok": true
+      },
+      {
+        "name": "Admin revalidates and imports booking",
+        "ok": true
+      },
+      {
+        "name": "Admin keeps exact selected credit and recalculates total",
+        "ok": true
+      },
+      {
+        "name": "Credit consumed only on confirmation",
+        "ok": true
+      },
+      {
+        "name": "Wallet can fully cover eligible booking",
+        "ok": true
+      },
+      {
+        "name": "Zero-due checkout needs no external payment",
+        "ok": true
+      }
+    ],
+    "errors": []
+  },
+  "club_booking_one_benefit": {
+    "checks": [
+      {
+        "name": "Private signed-in Club rate appears with Membership options",
+        "ok": true
+      },
+      {
+        "name": "Public Club contract does not expose private pricing rule",
+        "ok": true
+      },
+      {
+        "name": "Private Club rate is one exclusive choice",
+        "ok": true
+      },
+      {
+        "name": "Admin validates private Club rate and prevents double discount",
+        "ok": true
+      }
+    ],
+    "errors": []
+  },
+  "player_membership_profile": {
+    "checks": [
+      {
+        "name": "My Qourts has Membership tab",
+        "ok": true
+      },
+      {
+        "name": "Active plan visible",
+        "ok": true
+      },
+      {
+        "name": "Credits remaining/used visible",
+        "ok": true
+      },
+      {
+        "name": "Wallet balance/activity visible",
+        "ok": true
+      },
+      {
+        "name": "Usage ledger visible",
+        "ok": true
+      },
+      {
+        "name": "Payment history visible",
+        "ok": true
+      },
+      {
+        "name": "Mobile Membership tab usable",
+        "ok": true
+      }
+    ],
+    "errors": []
+  },
+  "club_membership_profile": {
+    "checks": [
+      {
+        "name": "Club Portal has Membership tab",
+        "ok": true
+      },
+      {
+        "name": "Active Club plan visible",
+        "ok": true
+      },
+      {
+        "name": "Club credit consumption visible",
+        "ok": true
+      },
+      {
+        "name": "Club wallet visible",
+        "ok": true
+      },
+      {
+        "name": "Club membership payment history visible",
+        "ok": true
+      },
+      {
+        "name": "Club Membership content responsive",
+        "ok": true
+      }
+    ]
+  },
+  "admin_membership_ui": {
+    "checks": [
+      {
+        "name": "QA pending subscription created",
+        "ok": true
+      },
+      {
+        "name": "Membership has Subscriptions tab",
+        "ok": true
+      },
+      {
+        "name": "Pending Client subscription visible",
+        "ok": true
+      },
+      {
+        "name": "Verify Payment & Activate action available",
+        "ok": true
+      },
+      {
+        "name": "Admin UI activation updates membership canonically",
+        "ok": true
+      },
+      {
+        "name": "Activated subscriber appears in Members",
+        "ok": true
+      }
+    ]
+  }
+}
